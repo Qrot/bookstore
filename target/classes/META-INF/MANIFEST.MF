@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: Amy_o
+Build-Jdk: 10.0.1
+Implementation-Title: bookstore
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.qrot
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/bookstore
+Created-By: Maven Integration for Eclipse
+
