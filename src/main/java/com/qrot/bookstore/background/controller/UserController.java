@@ -19,7 +19,6 @@ import com.qrot.bookstore.background.service.UserService;
 @Controller
 // 控制器的 URL
 @RequestMapping("/user")
-
 public class UserController {
 
 	@Autowired

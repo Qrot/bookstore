@@ -7,10 +7,13 @@ package com.qrot.bookstore.background.model;
  */
 public class User {
 
-	int id;
-	String name;
-	String password;
-	String userHead;
+	private int id;
+	private String name;
+	private String password;
+	private String userHead;
+	private Integer sex;
+	private String phone;
+	private String email;
 
 	public int getId() {
 		return id;
@@ -42,6 +45,30 @@ public class User {
 
 	public void setUserHead(String userHead) {
 		this.userHead = userHead;
+	}
+
+	public Integer getSex() {
+		return sex;
+	}
+
+	public void setSex(Integer sex) {
+		this.sex = sex;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }
