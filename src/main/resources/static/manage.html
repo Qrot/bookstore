@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <!-- Vue JS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        #content{
+            background-color: rgba(40,160,230,0.2);
+        }
+        #logo{
+            width: 30%;
+            height: 20%;
+        }
+        .jumbotron{
+            background-color: rgba(0,0,0,0);
+            margin-bottom: 0;
+        }
+        body{
+            background-image: url('img/manager_bg.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        .list-group .list-group-item{
+            background-color: #a2cde6;
+        }
+        .list-group .active{
+            background-color: #589fd1;
+            border-color: rgba(0,0,0,.125);
+        }
+        .form-group .form-control{
+            background-color: #c6d8e6;
+        }
+        .form-group .btn-info{
+            background-color: #589fd1;
+            border-color: #589fd1;
+        }
+        #book-cover{
+            width:100%;
+            height:100%;
+        }
+        .custom-file-label{
+            background-color: #e9ecef;
+        }
+        #copyright{
+            text-align: center;
+            padding: 5% 0 2% 0;
+            margin: 0;
+        }
+    </style>
+
+  </head>
+  <body>
+    <div class="container" id="content">
+        <!-- 头部 -->
+        <div class="row">
+            <div class="jumbotron jumbotron-fluid col-lg-12 p-2">
+                <div class="container">
+                    <!-- logo -->
+                    <div class="row">
+                        <img src="img/logo.png" alt="logo" class="img-fluid" id="logo">
+                    </div>
+                    <!-- info welcome -->
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <p class="lead">sale books online</p>
+                        </div>
+                        <div class="col-lg-2 text-right">
+                            <p class="h6">您好，管理员！</p>
+                        </div>
+                    </div>   
+                    <hr>
+                </div>      
+            </div>
+        </div>
+
+        <!-- 内容 -->
+        <div class="row">
+            <!-- 左边列表 -->
+            <div class="list-group col-lg-3 col-sm-3 ml-5 mb-5 text-center">
+                <button class="list-group-item list-group-item-action active">书籍上架</button>
+                <button class="list-group-item list-group-item-action">书籍下架</button>
+                <button class="list-group-item list-group-item-action">修改书籍</button>
+                <button class="list-group-item list-group-item-action">统计报表</button>
+                <button class="list-group-item list-group-item-action">查看订单</button>
+                <button class="list-group-item list-group-item-action">修改订单</button>
+                <button class="list-group-item list-group-item-action">分类管理</button>
+                <button class="list-group-item list-group-item-action">推荐设置</button>
+                <button class="list-group-item list-group-item-action">未上架书籍</button>
+            </div>
+            <!-- 右边内容 -->
+            <div class="col-lg-8 col-sm-8">
+                <!-- 书籍上架 -->
+                <div class="container ml-3">
+                    <div class="row">
+                        <div class="form-group col-lg-5">
+                            书籍名称：<input type="text" class="form-control">
+                            国际书籍编号：<input type="text" class="form-control">
+                            作者：<input type="text" class="form-control">
+                            出版社：<input type="text" class="form-control">
+                            出版时间：<input type="text" class="form-control">
+                            书籍分类：<input type="text" class="form-control">
+                            价格：<input type="text" class="form-control">
+                            库存：<input type="text" class="form-control">
+                        </div>
+                        <div class="form-group col-lg-7 pl-5">
+                            <div class="row">
+                                <div class="col"></div>
+                                <div class="col-lg-8">
+                                    <img src="img/book.jpeg" alt="书籍封面" id="book-cover">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input">
+                                        <label class="custom-file-label">上传书籍封面</label>
+                                    </div>
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                            <div class="row mt-5">
+                                简介：<textarea class="form-control" rows="5"></textarea>
+                            </div>
+                            <button type="button" class="btn btn-info btn-block mt-4">上架</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 书籍下架 -->
+
+
+                <!-- 统计报表 -->
+
+
+                <!-- 查看订单 -->
+
+
+                <!-- 修改订单 -->
+
+
+                <!-- 分类管理 -->
+
+
+                <!-- 推荐设置 -->
+
+
+                <!-- 未上架书籍 -->
+
+            </div>
+        </div>
+
+        <!-- 底部 -->
+        <div class="clearfix"></div>
+        <p id="copyright">Copyright 2018 by Qrot</p>
+                
+    </div>
+
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <script>
+        
+    
+    </script>
+  </body>
+</html>
