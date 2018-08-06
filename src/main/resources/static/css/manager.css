@@ -1,0 +1,126 @@
+body {
+    background-image: url('../img/manager_bg.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+}
+#content {
+    background-color: rgba(40, 160, 230, 0.2);
+}
+
+/* 头部样式 */
+.jumbotron {
+    background-color: rgba(0, 0, 0, 0);
+    margin-bottom: 0;
+}
+
+
+
+/* 左边列表样式 */
+.list-group .list-group-item {
+    background-color: #c6d8e6;
+}
+.list-group .active {
+    background-color: #589fd1;
+    border-color: rgba(0, 0, 0, .125);
+}
+
+
+
+/* 右边表单样式 */
+.form-group .form-control {
+    background-color: #c6d8e6;
+}
+.form-group .btn-info {
+    background-color: #589fd1;
+    border-color: #589fd1;
+}
+.form-group label{
+    margin: 0 5%;
+    line-height: 2.5;
+    float: left;
+}
+
+
+
+/* 上传封面 */
+.custom-file-label {
+    background-color: #e9ecef;
+}
+
+/* 搜索栏 */
+.input-group .form-control {
+    background-color: #c6d8e6;
+}
+.btn-outline-secondary {
+    background-color: #c6d8e6;
+    border-color: rgba(0, 0, 0, .125);
+}
+.btn-outline-secondary:hover {
+    background-color: #589fd1;
+    border-color: #589fd1;
+}
+
+
+/* 书籍卡片 */
+.card {
+    width: 30%;
+    height: 25%;
+    margin: 1%;
+    border-color: rgba(0, 0, 0, .125);
+}
+.card-body {
+    background-color: #c6d8e6;
+}
+.card-body .btn {
+    background-color: #589fd1;
+    color: white;
+}
+.card-title {
+    color: #495057;
+}
+
+
+/* 分页显示 */
+.page-link {
+    background-color: #c6d8e6;
+}
+.page-link:hover {
+    background-color: #589fd1;
+    color: white;
+}
+nav {
+    margin-left: 30%;
+}
+
+/* 订单和书籍项 */
+.order,.book-item{
+    background-color: #c6d8e6;
+    border: 1px solid #c6d8e6;
+    border-radius: 0.5em;
+    padding: 2%;
+}
+.order-item{
+    margin: 1% 0;
+    padding: 1% 0;
+    border: 1px solid rgba(0, 0, 0, .125);
+}
+.order,.book-item button{
+    background-color: #90c8f0;
+    border-color: #90c8f0;
+}
+.book-name{
+    color: #1075bd;
+    font-weight: 700;
+}
+.order,.book-item button:hover{
+    background-color: #1075bd;
+    border-color: #1075bd;
+    color: white;
+}
+
+/* 版权 */
+#copyright {
+    text-align: center;
+    padding: 5% 0 2% 0;
+    margin: 0;
+}

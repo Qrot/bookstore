@@ -10,108 +10,11 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
         crossorigin="anonymous">
+    <!-- mycss -->
+    <link rel="stylesheet" href="css/manager.css">
     <!-- Vue JS -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <style>
-        body {
-            background-image: url('img/manager_bg.jpg');
-            background-attachment: fixed;
-            background-size: cover;
-        }
 
-        #content {
-            background-color: rgba(40, 160, 230, 0.2);
-        }
-
-        /* 头部样式 */
-
-        .jumbotron {
-            background-color: rgba(0, 0, 0, 0);
-            margin-bottom: 0;
-        }
-
-
-
-        /* 左边列表样式 */
-
-        .list-group .list-group-item {
-            background-color: #c6d8e6;
-        }
-
-        .list-group .active {
-            background-color: #589fd1;
-            border-color: rgba(0, 0, 0, .125);
-        }
-
-
-
-        /* 右边表单样式 */
-
-        .form-group .form-control {
-            background-color: #c6d8e6;
-        }
-
-        .form-group .btn-info {
-            background-color: #589fd1;
-            border-color: #589fd1;
-        }
-
-
-
-        /* 上传封面 */
-
-        .custom-file-label {
-            background-color: #e9ecef;
-        }
-
-        /* 搜索栏 */
-
-        .input-group .form-control {
-            background-color: #c6d8e6;
-        }
-
-        .btn-outline-secondary {
-            background-color: #c6d8e6;
-            border-color: rgba(0, 0, 0, .125);
-        }
-
-        .btn-outline-secondary:hover {
-            background-color: #589fd1;
-            border-color: #589fd1;
-        }
-
-
-        /* 书籍卡片 */
-
-        .card {
-            width: 30%;
-            height: 25%;
-            margin: 1%;
-            border-color: rgba(0, 0, 0, .125);
-        }
-
-        .card-body {
-            background-color: #c6d8e6;
-        }
-
-        .card-body .btn {
-            background-color: #589fd1;
-            color: white;
-        }
-
-        .card-title {
-            color: #495057;
-        }
-
-
-        /* 版权 */
-
-        #copyright {
-            text-align: center;
-            padding: 5% 0 2% 0;
-            margin: 0;
-        }
-    </style>
 
 </head>
 
@@ -199,7 +102,7 @@
                     <!-- 书籍卡片 -->
                     <div id="books" class="mt-3">
                         <img src="img/no_books.jpg" class="img-fluid" alt="无相关信息" style="opacity: 0.5;">
-                        
+
                         <!-- <div class="card float-left">
                             <img class="card-img-top" src="img/book.jpeg" alt="书籍封面">
                             <div class="card-body">
@@ -214,11 +117,106 @@
 
                     </div>
                 </div>
+
                 <!-- 统计报表 -->
 
 
                 <!-- 查看订单 -->
+                <div class="container">
+                    <div class="row form-group">
+                        <div class="col-lg-4 mt-3">
+                            <label for="">从</label>
+                            <input type="date" class="form-control" style="width:80%">
+                        </div>
+                        <div class="col-lg-4 mt-3">
+                            <label for="">至</label>
+                            <input type="date" class="form-control" style="width:80%">
+                        </div>
+                        <div class="col-lg-4 mt-3">
+                            <label for="">状态</label>
+                            <select class="form-control" style="width:60%">
+                                <option>待付款</option>
+                                <option>待发货</option>
+                                <option>待收货</option>
+                            </select>
+                        </div>
+                    </div>
 
+                    <div class="container order">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>订单ID：</label>
+                                <label>234346543</label>
+                            </div>
+                            <div class="col-lg-4">
+                                <label class="text-muted">2018-07-14 10:22:56</label>
+                            </div>
+                            <div class="col-lg-4">
+                                <button type="button" class="btn btn-sm btn-block">修改状态</button>
+                            </div>
+                        </div>
+                        <div class="row order-item">
+                            <div class="col-lg-3">
+                                <img src="img/book.jpeg" class="img-fluid" alt="书籍封面">
+                            </div>
+                            <div class="col-lg-8">
+                                <label class="mt-2 text-primary book-name">书籍名称</label>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label>作者：</label>
+                                        <label>作者名</label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>出版社：</label>
+                                        <label>出版社</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label>数量：</label>
+                                        <label>2</label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>单价：</label>
+                                        <label>23.56</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label>小计：</label>
+                                        <label>53.22</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label>总金额：</label>
+                                <label>131.45</label>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>订单状态：</label>
+                                <label class="text-danger">待发货</label>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>联系方式：</label>
+                                <label>18396546577</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label>收货人：</label>
+                                <label>bob</label>
+                            </div>
+                            <div class="col-lg-9">
+                                <label>收货地址：</label>
+                                <label>湖南长沙市雨花区长沙理工大学云塘校区</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 
                 <!-- 修改订单 -->
 
