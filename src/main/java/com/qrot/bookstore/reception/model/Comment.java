@@ -1,4 +1,4 @@
-package com.qrot.bookstore.background.model;
+package com.qrot.bookstore.reception.model;
 
 import java.sql.Timestamp;
 

@@ -1,4 +1,4 @@
-package com.qrot.bookstore.background.model;
+package com.qrot.bookstore.reception.model;
 
 /**
  * 购物车实体类
@@ -10,6 +10,8 @@ public class Cart {
 	int userId;
 	int bookId;
 	int quantity;
+	String bookName;
+	String bookCover;
 
 	public int getUserId() {
 		return userId;
@@ -33,6 +35,22 @@ public class Cart {
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+
+	public String getBookName() {
+		return bookName;
+	}
+
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
+	}
+
+	public String getBookCover() {
+		return bookCover;
+	}
+
+	public void setBookCover(String bookCover) {
+		this.bookCover = bookCover;
 	}
 
 }
