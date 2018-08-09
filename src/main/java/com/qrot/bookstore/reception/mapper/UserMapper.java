@@ -24,7 +24,7 @@ public interface UserMapper {
 	 * 
 	 * @return
 	 */
-	@Select("select * from v_showalluser")
+	@Select("select * from v_show_all_user")
 	@Results(value = { 
 			@Result(column = "user_id", property = "id"), 
 			@Result(column = "user_name", property = "name"),
@@ -42,7 +42,7 @@ public interface UserMapper {
 	 * @param name
 	 * @return
 	 */
-	@Select("select * from v_showalluser where user_name=#{name} and user_password=#{password}")
+	@Select("select * from v_show_all_user where user_name=#{name} and user_password=#{password}")
 	@Results(value = { 
 			@Result(column = "user_id", property = "id"), 
 			@Result(column = "user_name", property = "name"),

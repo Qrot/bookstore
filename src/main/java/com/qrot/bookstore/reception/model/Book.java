@@ -2,6 +2,8 @@ package com.qrot.bookstore.reception.model;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 书籍实体类
@@ -22,8 +24,9 @@ public class Book {
 	String publish;
 	String kind;
 	String summary;
-	Date pubTime;
+	Date publTime;
 	String cover;
+	List<Comment> commentList = new ArrayList<>();
 
 	public int getId() {
 		return id;
@@ -121,12 +124,12 @@ public class Book {
 		this.summary = summary;
 	}
 
-	public Date getPubTime() {
-		return pubTime;
+	public Date getPublTime() {
+		return publTime;
 	}
 
-	public void setPubTime(Date pubTime) {
-		this.pubTime = pubTime;
+	public void setPublTime(Date publTime) {
+		this.publTime = publTime;
 	}
 
 	public String getCover() {
@@ -135,6 +138,14 @@ public class Book {
 
 	public void setCover(String cover) {
 		this.cover = cover;
+	}
+
+	public List<Comment> getCommentList() {
+		return commentList;
+	}
+
+	public void setCommentList(List<Comment> commentList) {
+		this.commentList = commentList;
 	}
 
 }

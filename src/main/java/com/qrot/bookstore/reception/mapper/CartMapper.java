@@ -21,7 +21,7 @@ public interface CartMapper {
 	 * 显示所有购物车信息
 	 * @return
 	 */
-	@Select("select * from v_showAllCart")
+	@Select("select * from v_show_all_cart")
 	@Results(value = { 
 			@Result(column = "user_id", property = "userId"), 
 			@Result(column = "book_id", property = "bookId"),
@@ -36,7 +36,7 @@ public interface CartMapper {
 	 * @param id
 	 * @return
 	 */
-	@Select("select * from v_showAllCart where user_id=#{id}")
+	@Select("select * from v_show_all_cart where user_id=#{id}")
 	@Results(value = { 
 			@Result(column = "user_id", property = "userId"), 
 			@Result(column = "book_id", property = "bookId"),
