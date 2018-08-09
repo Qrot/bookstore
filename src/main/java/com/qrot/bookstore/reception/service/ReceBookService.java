@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.qrot.bookstore.reception.mapper.BookMapper;
+import com.qrot.bookstore.reception.mapper.ReceBookMapper;
 import com.qrot.bookstore.reception.model.Book;
 
 /**
@@ -13,10 +13,10 @@ import com.qrot.bookstore.reception.model.Book;
  * @author TanZhiHua 2018年8月6日10点51分
  */
 @Service
-public class BookService {
+public class ReceBookService {
 
 	@Autowired
-	BookMapper bookMapper;
+	ReceBookMapper bookMapper;
 
 	/**
 	 * 显示所有书籍信息

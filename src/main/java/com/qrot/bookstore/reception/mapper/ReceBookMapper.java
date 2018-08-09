@@ -17,7 +17,7 @@ import com.qrot.bookstore.reception.model.Comment;
  * @author TanZhiHua 2018年8月6日10点34分
  */
 @Mapper
-public interface BookMapper {
+public interface ReceBookMapper {
 
 	/**
 	 * 显示所有书籍信息

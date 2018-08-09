@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.qrot.bookstore.reception.mapper.CartMapper;
+import com.qrot.bookstore.reception.mapper.ReceCartMapper;
 import com.qrot.bookstore.reception.model.Cart;
 
 /**
@@ -14,10 +14,10 @@ import com.qrot.bookstore.reception.model.Cart;
  *2018年8月6日08点42分
  */
 @Service
-public class CartService {
+public class ReceCartService {
 	
 	@Autowired
-	CartMapper cartMapper;
+	ReceCartMapper cartMapper;
 	
 	/**
 	 * 显示所有购物车信息

@@ -17,7 +17,7 @@ import com.qrot.bookstore.reception.model.User;
  * @author TanZhiHua 2018年8月4日09点47分
  */
 @Mapper
-public interface UserMapper {
+public interface ReceUserMapper {
 
 	/**
 	 * 显示所有用户

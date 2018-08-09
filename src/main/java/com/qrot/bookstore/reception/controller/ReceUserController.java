@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.qrot.bookstore.reception.model.User;
-import com.qrot.bookstore.reception.service.UserService;
+import com.qrot.bookstore.reception.service.ReceUserService;
 
 /**
  * 控制器依赖业务逻辑
@@ -23,10 +23,10 @@ import com.qrot.bookstore.reception.service.UserService;
 @Controller
 // 控制器的 URL
 @RequestMapping("/user")
-public class UserController {
+public class ReceUserController {
 
 	@Autowired
-	UserService userService;
+	ReceUserService userService;
 	
 	/**
 	 * 显示所有用户

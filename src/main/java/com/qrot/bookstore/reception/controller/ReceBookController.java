@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.qrot.bookstore.reception.model.Book;
-import com.qrot.bookstore.reception.service.BookService;
+import com.qrot.bookstore.reception.service.ReceBookService;
 
 /**
  * 
@@ -19,10 +19,10 @@ import com.qrot.bookstore.reception.service.BookService;
  */
 @Controller
 @RequestMapping("/book")
-public class BookController {
+public class ReceBookController {
 
 	@Autowired
-	BookService bookService;
+	ReceBookService bookService;
 
 	/**
 	 * 显示所有书籍信息

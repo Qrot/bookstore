@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.qrot.bookstore.reception.model.Cart;
-import com.qrot.bookstore.reception.service.CartService;
+import com.qrot.bookstore.reception.service.ReceCartService;
 
 /**
  * 
@@ -19,10 +19,10 @@ import com.qrot.bookstore.reception.service.CartService;
  */
 @Controller
 @RequestMapping("/cart")
-public class CartController {
+public class ReceCartController {
 	
 	@Autowired
-	CartService cartService;
+	ReceCartService cartService;
 	
 	/**
 	 * 显示所有购物车信息

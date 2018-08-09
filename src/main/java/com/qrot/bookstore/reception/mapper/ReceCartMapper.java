@@ -15,7 +15,7 @@ import com.qrot.bookstore.reception.model.Cart;
  *2018年8月6日08点39分
  */
 @Mapper
-public interface CartMapper {
+public interface ReceCartMapper {
 	
 	/**
 	 * 显示所有购物车信息

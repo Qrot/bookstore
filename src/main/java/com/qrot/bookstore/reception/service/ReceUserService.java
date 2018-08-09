@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.qrot.bookstore.reception.mapper.UserMapper;
+import com.qrot.bookstore.reception.mapper.ReceUserMapper;
 import com.qrot.bookstore.reception.model.User;
 
 /**
@@ -15,10 +15,10 @@ import com.qrot.bookstore.reception.model.User;
  *2018年8月4日09点28分
  */
 @Service
-public class UserService {
+public class ReceUserService {
 	
 	@Autowired
-	UserMapper usermapper;
+	ReceUserMapper usermapper;
 	
 	/**
 	 * 显示所有用户
