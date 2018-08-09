@@ -86,7 +86,7 @@ public class BookController {
 	 * @param offset
 	 * @return
 	 */
-	@GetMapping("/getbook/{bookid}")
+	@GetMapping("/getsomebook")
 	@ResponseBody
 	public List<Book> getSomeBook(
 			@RequestParam(name="k", defaultValue="10",required=false) int start,
@@ -100,7 +100,7 @@ public class BookController {
 	 * @param offset 偏移量
 	 * @return
 	 */
-	@GetMapping("/getbook/{bookid}")
+	@GetMapping("/getkindbook")
 	@ResponseBody
 	public List<Book> getKindBook(
 			@RequestParam(name="k", required=true) String kind,
