@@ -3,7 +3,7 @@ body {
     background-attachment: fixed;
     background-size: cover;
 }
-#content {
+#app {
     background-color: rgba(40, 160, 230, 0.2);
 }
 
@@ -40,10 +40,10 @@ body {
     float: left;
 }
 
-
-
 /* 上传封面 */
-.custom-file-label {
+.custom-file .custom-file-label {
+    margin: 0;
+    line-height: 140%;
     background-color: #e9ecef;
 }
 
@@ -93,7 +93,7 @@ nav {
 }
 
 /* 订单和书籍项 */
-.order,.book-item{
+.book-item{
     background-color: #c6d8e6;
     border: 1px solid #c6d8e6;
     border-radius: 0.5em;
@@ -104,7 +104,7 @@ nav {
     padding: 1% 0;
     border: 1px solid rgba(0, 0, 0, .125);
 }
-.order,.book-item button{
+.book-item button{
     background-color: #90c8f0;
     border-color: #90c8f0;
 }
@@ -112,7 +112,7 @@ nav {
     color: #1075bd;
     font-weight: 700;
 }
-.order,.book-item button:hover{
+.book-item button:hover{
     background-color: #1075bd;
     border-color: #1075bd;
     color: white;
