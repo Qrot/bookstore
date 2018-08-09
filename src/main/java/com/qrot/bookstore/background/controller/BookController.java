@@ -3,7 +3,6 @@ package com.qrot.bookstore.background.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,23 +10,24 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.qrot.bookstore.background.model.Book;
-import com.qrot.bookstore.background.service.BackgroundService;
+import com.qrot.bookstore.background.service.BackBookService;
 
-@Controller
-@RequestMapping
+@RestController
+@RequestMapping("/api/1")
 public class BookController {
 
 	@Autowired
-	BackgroundService service;
+	BackBookService service;
 	
 	/**
 	 * 新增书籍
 	 * @param book
 	 * @return
 	 */
-	@PostMapping("/addbook")
+	@PostMapping(path="/addbook",consumes="application/json",produces="application/json")
 	@ResponseBody
 	public String add(Book book) {
 		
@@ -41,7 +41,7 @@ public class BookController {
 	 * @param id
 	 * @return
 	 */
-	@PutMapping("/recoverbook/{id}")
+	@PutMapping(path="/recoverbook/{id}",consumes="application/json",produces="application/json")
 	@ResponseBody
 	public String recoverBook(@PathVariable int id) {
 		service.recoverBook(id);
@@ -53,7 +53,7 @@ public class BookController {
 	 * @param bookid
 	 * @return
 	 */
-	@PutMapping("/removebook/{bookid}")
+	@PutMapping(path="/removebook/{bookid}",consumes="application/json",produces="application/json")
 	@ResponseBody
 	public String removeBook(@PathVariable int bookid) {
 		service.removeBook(bookid);
@@ -66,14 +66,14 @@ public class BookController {
 	 * @param book
 	 * @return
 	 */
-	@PutMapping("/updatebook/{bookid}")
+	@PutMapping(path="/updatebook/{bookid}",consumes="application/json",produces="application/json")
 	@ResponseBody
 	public String update(@PathVariable int bookid, Book book) {
 		service.updateBook(book);
 		return "{msg: 'ok'}";
 	}
 	
-	@GetMapping("/getbook/{bookid}")
+	@GetMapping(path="/getbook/{bookid}",consumes="application/json",produces="application/json")
 	@ResponseBody
 	public Book getOneBook(@PathVariable int bookid) {
 		return service.getOneBook(bookid);
@@ -86,10 +86,10 @@ public class BookController {
 	 * @param offset
 	 * @return
 	 */
-	@GetMapping("/getsomebook")
+	@GetMapping(path="/getsomebook",consumes="application/json",produces="application/json")
 	@ResponseBody
 	public List<Book> getSomeBook(
-			@RequestParam(name="k", defaultValue="10",required=false) int start,
+			@RequestParam(name="s", defaultValue="10",required=false) int start,
 			@RequestParam(name="o", defaultValue="0", required=false) int offset){
 		return service.getSomeBook(start, offset);
 	}
@@ -100,7 +100,7 @@ public class BookController {
 	 * @param offset 偏移量
 	 * @return
 	 */
-	@GetMapping("/getkindbook")
+	@GetMapping(path="/getkindbook",consumes="application/json",produces="application/json")
 	@ResponseBody
 	public List<Book> getKindBook(
 			@RequestParam(name="k", required=true) String kind,

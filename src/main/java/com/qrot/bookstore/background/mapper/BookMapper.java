@@ -26,6 +26,16 @@ public interface BookMapper {
 	 */
 	@Insert("insert into book_info(book_isbn,book_name,book_author,book_publish,book_kind,book_summary,book_publtime,book_cover) "
 			+ "values(#{isbn},#{bookname},#{author},#{publish},#{kind},#{summary},#{publtime},#{cover})")
+	@Results(value = { 
+			@Result(column = "book_id", property = "bookid"),  
+			@Result(column = "book_isbn", property = "isbn"),
+			@Result(column = "book_name", property = "bookname"), 
+			@Result(column = "book_author", property = "author"),
+			@Result(column = "book_publish", property = "publish"), 
+			@Result(column = "book_kind", property = "kind"),
+			@Result(column = "book_summary", property = "summary"),
+			@Result(column = "book_publtime", property = "publtime"),
+			@Result(column = "book_cover", property = "cover"),})
 	void addBookInfo(Book book);
 	
 	/**
@@ -34,6 +44,12 @@ public interface BookMapper {
 	 */
 	@Insert("insert into book(book_id,book_price,bok_storage,book_volume,book_score,book_delete) "
 			+ "values(LAST_INSERT_ID(),#{price},#{storage},#{volume},#{score},#{delete})")
+	@Results(value = { 
+			@Result(column = "book_price", property = "price"),
+			@Result(column = "book_storage", property = "storage"),
+			@Result(column = "book_volume", property = "volume"), 
+			@Result(column = "book_score", property = "score"),
+			@Result(column = "book_delete",property = "delete")})
 	void addBook(Book book);
 	
 	/**
@@ -41,6 +57,8 @@ public interface BookMapper {
 	 * @param bookid
 	 */
 	@Update("update book set book_delete = 1 where book_id=#{bookid}")
+	@Results(value = { 
+			@Result(column = "book_id", property = "bookid") })
 	void removeBook(int bookid);
 	
 	/**
@@ -48,6 +66,8 @@ public interface BookMapper {
 	 * @param bookid
 	 */
 	@Update("update book set book_delete = 0 where book_id=#{bookid}")
+	@Results(value = { 
+			@Result(column = "book_id", property = "bookid") })
 	void recoverBook(int bookid);
 	
 	/**
@@ -57,7 +77,7 @@ public interface BookMapper {
 	 */
 	@Select("select * from v_book where book_id =#{bookid}")
 	@Results(value = { 
-			@Result(column = "book_id", property = "id"),  
+			@Result(column = "book_id", property = "bookid"),  
 			@Result(column = "book_isbn", property = "isbn"),
 			@Result(column = "book_name", property = "bookname"), 
 			@Result(column = "book_author", property = "author"),
@@ -95,7 +115,7 @@ public interface BookMapper {
 			@Result(column = "book_volume", property = "volume"), 
 			@Result(column = "book_score", property = "score"),
 			@Result(column = "book_delete", property = "delete"),})
-	List<Book> getSomeBook(int start, int offset);
+	List<Book> getSomeBook(@Param("start") int start, @Param("offset")int offset);
 	
 	/**
 	 * 分类显示书籍
@@ -119,7 +139,7 @@ public interface BookMapper {
 			@Result(column = "book_volume", property = "volume"), 
 			@Result(column = "book_score", property = "score"),
 			@Result(column = "book_delete", property = "delete"),  })
-	List<Book> getKindBook (String kind, int offset);
+	List<Book> getKindBook (@Param("kind")String kind, @Param("offset")int offset);
 	
 	/**
 	 * 更新书籍信息

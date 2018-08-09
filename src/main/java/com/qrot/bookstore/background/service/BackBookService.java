@@ -1,14 +1,18 @@
 package com.qrot.bookstore.background.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.qrot.bookstore.background.mapper.BookMapper;
 import com.qrot.bookstore.background.model.Book;
+
+/**
+ * 关于书籍的业务逻辑：依赖数据访问操作
+ * @author 15295
+ *
+ */
 @Service
-public class BackgroundService {
+public class BackBookService {
 
 	@Autowired
 	BookMapper bookMapper;
