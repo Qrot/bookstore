@@ -30,14 +30,18 @@ body {
 .form-group .form-control {
     background-color: #c6d8e6;
 }
-.form-group .btn-info {
-    background-color: #589fd1;
-    border-color: #589fd1;
-}
 .form-group label{
     margin: 0 5%;
     line-height: 2.5;
     float: left;
+}
+.form-group .btn{
+    background-color: #589fd1;
+    border-color: #589fd1;
+}
+.form-group .btn:hover{
+    background-color: #1075bd;
+    border-color: #1075bd;
 }
 
 /* 上传封面 */
@@ -74,6 +78,9 @@ body {
 .card-body .btn {
     background-color: #589fd1;
     color: white;
+}
+.card-body .btn:hover{
+    background-color: #1075bd;
 }
 .card-title {
     color: #495057;

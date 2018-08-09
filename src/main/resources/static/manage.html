@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Title</title>
+    <title>管理员 · qrot</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,7 +18,7 @@
 <body>
     <div class="container" id="app">
         <!-- 头部 -->
-        <div class="row">
+        <div class="row" id="head">
             <div class="jumbotron jumbotron-fluid col-lg-12 p-2">
                 <div class="container">
                     <!-- logo -->
@@ -28,10 +28,10 @@
                     <!-- info welcome -->
                     <div class="row">
                         <div class="col-lg-10">
-                            <p class="lead">sale books online</p>
+                            <p class="lead">{{ lead }}</p>
                         </div>
                         <div class="col-lg-2 text-right">
-                            <p class="h6">您好，管理员！</p>
+                            <p class="h6">{{ welcome }}</p>
                         </div>
                     </div>
                     <hr>
@@ -40,9 +40,9 @@
         </div>
 
         <!-- 内容 -->
-        <div class="row" id="content">
+        <div class="row">
             <!-- 左边列表 -->
-            <div class="list-group col-lg-3 col-sm-3 ml-5 mb-5 text-center" id="left-list">
+            <div class="list-group col-lg-3 col-md-4 ml-5 text-center" id="left-list">
                 <button class="list-group-item list-group-item-action active">添加书籍</button>
                 <button class="list-group-item list-group-item-action">书籍管理</button>
                 <button class="list-group-item list-group-item-action">统计报表</button>
@@ -52,52 +52,62 @@
                 <button class="list-group-item list-group-item-action">书籍上新</button>
             </div>
             <!-- 右边内容 -->
-            <div class="col-lg-8 col-sm-8" id="right-list">
+            <div class="col-lg-8 col-md-7" id="right-list">
 
                 <!-- 书籍上架 -->
-                <div class="container ml-3 right-content">
-                    <div class="row">
+                <div class="container ml-3 right-content" id="addBook">
+                    <form class="row">
                         <div class="form-group col-lg-5">
                             书籍名称：
-                            <input type="text" class="form-control"> 
+                            <input v-model="bookName" type="text" class="form-control"> 
                             国际书籍编号：
-                            <input type="text" class="form-control"> 
+                            <input v-model="bookISBN" type="text" class="form-control"> 
                             作者：
-                            <input type="text" class="form-control"> 
+                            <input v-model="bookAuthor" type="text" class="form-control"> 
                             出版社：
-                            <input type="text" class="form-control"> 
+                            <input v-model="bookPublilsh" type="text" class="form-control"> 
                             出版时间：
-                            <input type="date" class="form-control"> 
+                            <input v-model="bookPubTime" type="date" class="form-control"> 
                             书籍分类：
-                            <input type="text" class="form-control"> 
+                            <input v-model="bookKind" type="text" class="form-control"> 
                             价格：
-                            <input type="text" class="form-control"> 
+                            <input v-model="bookPrice" type="text" class="form-control">
                             库存：
-                            <input type="text" class="form-control">
+                            <input v-model="bookStorage" type="text" class="form-control">
                         </div>
                         <div class="form-group col-lg-7 pl-5">
+                            <!-- 书籍封面 -->
                             <div class="row">
                                 <div class="col"></div>
                                 <div class="col-lg-8">
                                     <img src="img/book.jpeg" alt="书籍封面" class="img-fluid">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input">
+                                        <input v-model="bookCover" type="file" class="custom-file-input">
                                         <label class="custom-file-label">上传书籍封面</label>
                                     </div>
                                 </div>
                                 <div class="col"></div>
                             </div>
-                            <div class="row mt-5">
+                            <div class="row mt-3 mb-3">
                                 简介：
-                                <textarea class="form-control" rows="5"></textarea>
+                                <textarea v-model="bookSummary" class="form-control" rows="5"></textarea>
                             </div>
-                            <button type="button" class="btn btn-info btn-block mt-4">保存</button>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input class="btn btn-primary btn-block btn-sm mt-2" type="reset" value="取消">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <input v-on:click="add()" class="btn btn-primary btn-block btn-sm mt-2" type="submit" value="保存">
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
 
                 <!-- 书籍管理 -->
-                <div class="clearfix container right-content d-none">
+                <div class="clearfix container right-content d-none" id="bookmgr">
                     <div class="input-group mt-3">
                         <input type="text" class="form-control" placeholder="书籍名称或者书籍作者">
                         <div class="input-group-append">
@@ -129,7 +139,7 @@
                                         </button>
                                     </div>
                                 </div>
-                                
+
                                 <div class="modal fade" id="modify" tabindex="-1" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -141,21 +151,23 @@
                                             </div>
                                             <div class="modal-body">
                                                 书籍名称：
-                                                <input type="text" class="form-control"> 
+                                                <input v-model="bookName" type="text" class="form-control"> 
                                                 国际书籍编号：
-                                                <input type="text" class="form-control"> 
+                                                <input v-model="bookISBN" type="text" class="form-control"> 
                                                 作者：
-                                                <input type="text" class="form-control"> 
+                                                <input v-model="bookAuthor" type="text" class="form-control"> 
                                                 出版社：
-                                                <input type="text" class="form-control"> 
+                                                <input v-model="bookPublilsh" type="text" class="form-control"> 
                                                 出版时间：
-                                                <input type="date" class="form-control"> 
+                                                <input v-model="bookPubTime" type="date" class="form-control"> 
                                                 书籍分类：
-                                                <input type="text" class="form-control"> 
+                                                <input v-model="bookKind" type="text" class="form-control"> 
                                                 价格：
-                                                <input type="text" class="form-control"> 
+                                                <input v-model="bookPrice" type="text" class="form-control"> 
                                                 库存：
-                                                <input type="text" class="form-control">
+                                                <input v-model="bookQuantity" type="text" class="form-control">
+                                                简介：
+                                                <textarea v-model="bookSummary" class="form-control" rows="5"></textarea>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
@@ -207,7 +219,7 @@
 
                 <!-- 统计报表 -->
                 <div class="container right-content d-none">
-                        统计报表
+                    统计报表
                 </div>
 
                 <!-- 订单管理 -->
@@ -309,7 +321,7 @@
 
 
                 <!-- 分类管理 -->
-                <div class="container right-content d-none"> 
+                <div class="container right-content d-none">
                     <div class="row form-group">
                         <div class="col-lg-3">
                             <label for="">分类</label>
@@ -413,7 +425,7 @@
 
                 <!-- 推荐设置 -->
                 <div class="container right-content d-none">
-                        推荐设置
+                    推荐设置
                 </div>
 
                 <!-- 书籍上新 -->
@@ -465,8 +477,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6 mt-3">
-                                        <button type="button" class="btn btn-sm btn-block" data-toggle="popover" 
-                                        data-placement="top" data-content="简介详细信息texttexttexttexttexttexttexttexttexttexttext">
+                                        <button type="button" class="btn btn-sm btn-block" data-toggle="popover" data-placement="top" data-content="简介详细信息texttexttexttexttexttexttexttexttexttexttext">
                                             查看简介
                                         </button>
                                     </div>
@@ -491,8 +502,11 @@
 
 
     <!-- Optional JavaScript -->
+    <!-- axios js -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- Vue JS -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -502,33 +516,8 @@
         crossorigin="anonymous"></script>
 
     <!-- my script -->
-    <script>
+    <script src="js/manager.js"></script>
 
-
-
-
-
-        // 页内内容切换
-        $(function(){
-            $('#left-list .list-group-item').click(function(){
-                var $this = this;
-                $($('#left-list .list-group-item')).each(function(i,el){
-                    var rightel = $('#right-list .right-content').eq(i);
-                    if($this == el){
-                        $($this).addClass('active');
-                        rightel.removeClass('d-none');
-                    }else{
-                        $(el).removeClass('active');
-                        rightel.addClass('d-none');
-                    }
-                })
-            });
-        });
-
-        // 查看书籍简介
-        $('[data-toggle="popover"]').popover();
-
-    </script>
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-package com.qrot.bookstore.background.control;
+package com.qrot.bookstore.background.controller;
 
 import java.util.List;
 
