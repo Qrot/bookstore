@@ -1,6 +1,7 @@
 package com.qrot.bookstore.background.service;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.qrot.bookstore.background.mapper.BookMapper;
@@ -72,7 +73,7 @@ public class BackBookService {
 	}
 	
 	/**
-	 * 获得某个类别的十行书籍信息
+	 * 获得某个类别的六行书籍信息
 	 * @param kind  类别
 	 * @param offset 偏移量
 	 * @return
@@ -81,4 +82,30 @@ public class BackBookService {
 		return bookMapper.getKindBook(kind, offset);
 	}
 	
+	/**
+	 * 得到书籍的所有分类
+	 * @return
+	 */
+	public List<String> getkind(){
+		return bookMapper.getkind();
+	}
+	
+	/**
+	 * 对书籍进行模糊查询
+	 * @param text
+	 * @param offset
+	 * @return
+	 */
+	public List<Book> selectBook(String text,int offset){
+		return bookMapper.selectBook(text, offset);
+	}
+	
+	/**
+	 * 查询未上架书籍
+	 * @param offset
+	 * @return
+	 */
+	public List<Book> getDeleteBook(int offset){
+		return bookMapper.getDeleteBook(offset);
+	}
 }

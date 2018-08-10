@@ -95,7 +95,7 @@ public class BookController {
 	}
 	
 	/**
-	 * 获得某个类别的十行书籍信息
+	 * 获得某个类别的六行书籍信息
 	 * @param kind  类别
 	 * @param offset 偏移量
 	 * @return
@@ -106,5 +106,41 @@ public class BookController {
 			@RequestParam(name="k", required=true) String kind,
 			@RequestParam(name="o", defaultValue="0", required=false) int offset){
 		return service.getKindBook(kind, offset);
+	}
+	
+	/**
+	 * 得到书籍的所有分类
+	 * @return
+	 */
+	@GetMapping(path="/getkind")
+	@ResponseBody
+	public List<String> getkind(){
+		return service.getkind();
+	}
+	
+	/**
+	 * 模糊查询
+	 * @param text
+	 * @param offset
+	 * @return
+	 */
+	@GetMapping(path="/selectbook")
+	@ResponseBody
+	public List<Book> selectBook(
+			@RequestParam(name="t", required=true) String text,
+			@RequestParam(name="o", defaultValue="0", required=false) int offset){
+		return service.selectBook(text, offset);
+	}
+	
+	/**
+	 * 查询未上架书籍
+	 * @param offset
+	 * @return
+	 */
+	@GetMapping(path="/getdeletebook")
+	@ResponseBody
+	public List<Book> getDeleteBook(
+			@RequestParam(name="o", defaultValue="0", required=false) int offset){
+		return service.getDeleteBook(offset);
 	}
 }
