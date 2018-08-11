@@ -2,6 +2,7 @@ package com.qrot.bookstore.reception.model;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * 订单实体类
@@ -18,6 +19,7 @@ public class Orders {
 	String address;
 	String phone;
 	Timestamp time;
+	List<Item> itemList;
 
 	public int getOrderId() {
 		return orderId;
@@ -81,6 +83,14 @@ public class Orders {
 
 	public void setTime(Timestamp time) {
 		this.time = time;
+	}
+
+	public List<Item> getItemList() {
+		return itemList;
+	}
+
+	public void setItemList(List<Item> itemList) {
+		this.itemList = itemList;
 	}
 
 }

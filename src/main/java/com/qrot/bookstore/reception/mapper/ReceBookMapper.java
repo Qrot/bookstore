@@ -94,10 +94,10 @@ public interface ReceBookMapper {
 	 * 模糊查询搜索书籍
 	 * @return
 	 */
-	@Select("select * from v_show_all_book where book_price regexp #{price} "
-			+ "or book_score regexp #{score} or book_name regexp #{name} "
-			+ "or book_author regexp #{author} or book_publish regexp #{publish} "
-			+ "or book_kind regexp #{kind} or book_publtime regexp #{publTime}")
+	@Select("select * from v_show_all_book where book_price regexp #{keyWord} "
+			+ "or book_score regexp #{keyWord} or book_name regexp #{keyWord} "
+			+ "or book_author regexp #{keyWord} or book_publish regexp #{keyWord} "
+			+ "or book_kind regexp #{keyWord} or book_publtime regexp #{keyWord}")
 	@Results(value = { 
 			@Result(column = "book_id", property = "id"), 
 			@Result(column = "book_price", property = "price"),
@@ -115,13 +115,7 @@ public interface ReceBookMapper {
 			@Result(column = "book_cover", property = "cover"), 
 	})
 	List<Book> selectBook(
-			@Param("price") String price,
-			@Param("score") String score,
-			@Param("name") String name,
-			@Param("author") String author,
-			@Param("publish") String publish,
-			@Param("kind") String kind,
-			@Param("publTime") String publTime
+			@Param("keyWord") String keyWord
 			);
 
 	/**

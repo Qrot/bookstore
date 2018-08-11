@@ -9,17 +9,17 @@ import java.math.BigDecimal;
  */
 public class Item {
 
-	int itemId;
+	int orderId;
 	int bookId;
 	int quantity;
 	BigDecimal price;
 
 	public int getItemId() {
-		return itemId;
+		return orderId;
 	}
 
-	public void setItemId(int itemId) {
-		this.itemId = itemId;
+	public void setItemId(int orderId) {
+		this.orderId = orderId;
 	}
 
 	public int getBookId() {

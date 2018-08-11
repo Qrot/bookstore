@@ -35,6 +35,12 @@ public class ReceBookController {
 		return bookService.show();
 	}
 	
+	/**
+	 * 分类显示
+	 * @param kind
+	 * @param offset
+	 * @return
+	 */
 	@GetMapping("/kind")
 	@ResponseBody
 	public List<Book> kindShow(
@@ -44,6 +50,11 @@ public class ReceBookController {
 		return bookService.kindShow(kind, offset);
 	}
 	
+	/**
+	 * 获取特定书籍的所有信息
+	 * @param bookId
+	 * @return
+	 */
 	@GetMapping("/{bookId}")
 	@ResponseBody
 	public Book showBookDetailInfo(
@@ -66,16 +77,10 @@ public class ReceBookController {
 	@GetMapping("/select")
 	@ResponseBody
 	public List<Book> selectBook(
-			@RequestParam(name="pric", defaultValue="' '", required=false) String price,
-			@RequestParam(name="scor", defaultValue="' '", required=false) String score,
-			@RequestParam(name="name", defaultValue="' '", required=false) String name,
-			@RequestParam(name="auth", defaultValue="' '", required=false) String author,
-			@RequestParam(name="publ", defaultValue="' '", required=false) String publish,
-			@RequestParam(name="kind", defaultValue="' '", required=false) String kind,
-			@RequestParam(name="time", defaultValue="' '", required=false) String publTime
+			@RequestParam(name="keyWord", defaultValue="' '", required=false) String keyWord
 	) {
 		
-		return bookService.selectBook(price, score, name, author, publish, kind, publTime);
+		return bookService.selectBook(keyWord);
 		
 	}
 }

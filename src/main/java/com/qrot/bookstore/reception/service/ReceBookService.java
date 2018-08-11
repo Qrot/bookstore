@@ -87,9 +87,8 @@ public class ReceBookService {
 	 * @param publTime
 	 * @return
 	 */
-	public List<Book> selectBook(String price, String score, String name, String author, String publish, String kind,
-			String publTime) {
-		return bookMapper.selectBook(price, score, name, author, publish, kind, publTime);
+	public List<Book> selectBook(String keyWord) {
+		return bookMapper.selectBook(keyWord);
 	}
 
 }
