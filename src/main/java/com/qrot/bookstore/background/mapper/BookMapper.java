@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
 
 import com.qrot.bookstore.background.model.Book;
@@ -42,7 +43,7 @@ public interface BookMapper {
 	 * 增加书籍变动信息
 	 * @param book
 	 */
-	@Insert("insert into book(book_id,book_price,bok_storage,book_volume,book_score,book_delete) "
+	@Insert("insert into book(book_id,book_price,book_storage,book_volume,book_score,book_delete) "
 			+ "values(LAST_INSERT_ID(),#{price},#{storage},#{volume},#{score},#{delete})")
 	@Results(value = { 
 			@Result(column = "book_price", property = "price"),
@@ -51,6 +52,32 @@ public interface BookMapper {
 			@Result(column = "book_score", property = "score"),
 			@Result(column = "book_delete",property = "delete")})
 	void addBook(Book book);
+	
+	/**
+	 * 修改书籍基本数据
+	 * @param book
+	 */
+	@Update("update book_info set book_author=#{author}, book_publish=#{publish}, book_kind=#{kind},"
+			+ "book_summary=#{book_summary}, book_publtime=#{book_publtime} where book_id=#{bookid}")
+	@Results(value = { 
+			@Result(column = "book_id", property = "bookid"),
+			@Result(column = "book_author", property = "author"),
+			@Result(column = "book_publish", property = "publish"), 
+			@Result(column = "book_kind", property = "kind"),
+			@Result(column = "book_summary", property = "summary"),
+			@Result(column = "book_publtime", property = "publtime"),})
+	void updateBookInfo(Book book);
+	
+	/**
+	 * 修改书籍变动信息
+	 * @param book
+	 */
+	@Update("update book set book_price=#{price},book_storage=#{storage} where book_id=#{bookid}")
+	@Results(value = { 
+			@Result(column = "book_id", property = "bookid"),
+			@Result(column = "book_price", property = "price"),
+			@Result(column = "book_storage", property = "storage"),})
+	void updateBook(Book book);
 	
 	/**
 	 * 书籍下架
@@ -76,7 +103,7 @@ public interface BookMapper {
 	 * @return
 	 */
 	@Select("select * from v_book where book_id =#{bookid}")
-	@Results(value = { 
+	@Results(id="book", value = { 
 			@Result(column = "book_id", property = "bookid"),  
 			@Result(column = "book_isbn", property = "isbn"),
 			@Result(column = "book_name", property = "bookname"), 
@@ -91,55 +118,46 @@ public interface BookMapper {
 			@Result(column = "book_volume", property = "volume"), 
 			@Result(column = "book_score", property = "score"),
 			@Result(column = "book_delete", property = "delete"),})
-	Book getOneBook(int bookid);
+	Book getBookByID(int bookid);
+	
+	/**
+	 * 统计书籍数量
+	 * @return
+	 */
+	@Select("select count(book_id) from v_book")
+	int getAllBookLen();
 	
 	/**
 	 * 显示指定行数的全部书籍信息
-	 * @param kind
-	 * @param offset
+	 * @param len  长度
+	 * @param offset  偏移量
 	 * @return
 	 */
-	@Select("select * from v_book limit #{start} offset #{offset}")
-	@Results(value = { 
-			@Result(column = "book_id", property = "bookid"),  
-			@Result(column = "book_isbn", property = "isbn"),
-			@Result(column = "book_name", property = "bookname"), 
-			@Result(column = "book_author", property = "author"),
-			@Result(column = "book_publish", property = "publish"), 
-			@Result(column = "book_kind", property = "kind"),
-			@Result(column = "book_summary", property = "summary"),
-			@Result(column = "book_publtime", property = "publtime"),
-			@Result(column = "book_cover", property = "cover"), 
-			@Result(column = "book_price", property = "price"),
-			@Result(column = "book_storage", property = "storage"),
-			@Result(column = "book_volume", property = "volume"), 
-			@Result(column = "book_score", property = "score"),
-			@Result(column = "book_delete", property = "delete"),})
-	List<Book> getSomeBook(@Param("start") int start, @Param("offset")int offset);
+	@Select("select * from v_book limit #{len} offset #{offset}")
+	@ResultMap("book")
+	List<Book> getAllBook(@Param("len") int len, @Param("offset")int offset);
 	
 	/**
-	 * 分类显示书籍，六行
+	 * 统计指定类别的书籍数量
 	 * @param kind
-	 * @param offset
 	 * @return
 	 */
-	@Select("select * from v_book where book_kind=#{kind} limit 6 offset #{offset}")
-	@Results(value = { 
-			@Result(column = "book_id", property = "bookid"), 
-			@Result(column = "book_isbn", property = "isbn"),
-			@Result(column = "book_name", property = "bookname"), 
-			@Result(column = "book_author", property = "author"),
-			@Result(column = "book_publish", property = "publish"), 
-			@Result(column = "book_kind", property = "kind"),
-			@Result(column = "book_summary", property = "summary"),
-			@Result(column = "book_publtime", property = "publtime"),
-			@Result(column = "book_cover", property = "cover"),
-			@Result(column = "book_price", property = "price"),
-			@Result(column = "book_storage", property = "storage"),
-			@Result(column = "book_volume", property = "volume"), 
-			@Result(column = "book_score", property = "score"),
-			@Result(column = "book_delete", property = "delete"),  })
-	List<Book> getKindBook (@Param("kind")String kind, @Param("offset")int offset);
+	@Select("select count(book_id) from v_book where book_kind=#{kind}")
+	int getKindBookLen(@Param("kind")String kind);
+	
+	/**
+	 * 分类显示书籍
+	 * @param kind  类别
+	 * @param len  长度
+	 * @param offset  偏移量
+	 * @return
+	 */
+	@Select("select * from v_book where book_kind=#{kind} limit #{len} offset #{offset}")
+	@ResultMap("book")
+	List<Book> getKindBook (
+			@Param("kind")String kind,
+			@Param("len") int len, 
+			@Param("offset")int offset);
 	
 	/**
 	 * 得到书籍的所有分类
@@ -149,64 +167,48 @@ public interface BookMapper {
 	List<String> getkind();
 	
 	/**
-	 * 更新书籍信息
-	 * @param book
+	 * 统计书籍模糊查询结果数量
+	 * @param text
+	 * @return
 	 */
-	@Update("update book set book_price=#{price},book_storage=#{storage},book_volume=#{volume},book_score=#{score} where book_id=#{bookid}")
-	@Results(value = { 
-			@Result(column = "book_id", property = "bookid"),
-			@Result(column = "book_price", property = "price"),
-			@Result(column = "book_storage", property = "storage"),
-			@Result(column = "book_volume", property = "volume"), 
-			@Result(column = "book_score", property = "score"),  })
-	void update(Book book);
+	@Select("select count(book_id) from v_book where book_name regexp #{text} "
+			+ "or book_author regexp #{text} "
+			+ "or book_publish regexp #{text} "
+			+ "or book_kind regexp #{text}")
+	int getSelectBookLen(@Param("text") String text);
 	
 	/**
-	 * 模糊查询搜索书籍
+	 *  模糊查询搜索书籍
+	 * @param text
+	 * @param len
+	 * @param offset
 	 * @return
 	 */
 	@Select("select * from v_book where book_name regexp #{text} "
 			+ "or book_author regexp #{text} "
 			+ "or book_publish regexp #{text} "
 			+ "or book_kind regexp #{text}"
-			+ "limit 6 offset #{offset}")
-	@Results(value = { 
-			@Result(column = "book_id", property = "bookid"),  
-			@Result(column = "book_isbn", property = "isbn"),
-			@Result(column = "book_name", property = "bookname"), 
-			@Result(column = "book_author", property = "author"),
-			@Result(column = "book_publish", property = "publish"), 
-			@Result(column = "book_kind", property = "kind"),
-			@Result(column = "book_summary", property = "summary"),
-			@Result(column = "book_publtime", property = "publtime"),
-			@Result(column = "book_cover", property = "cover"), 
-			@Result(column = "book_price", property = "price"),
-			@Result(column = "book_storage", property = "storage"),
-			@Result(column = "book_volume", property = "volume"), 
-			@Result(column = "book_score", property = "score"),
-			@Result(column = "book_delete", property = "delete"),})
-	List<Book> selectBook(@Param("text") String text, @Param("offset")int offset);
+			+ "limit #{len} offset #{offset}")
+	@ResultMap("book")
+	List<Book> selectBook(
+			@Param("text") String text, 
+			@Param("len") int len, 
+			@Param("offset")int offset);
+	
+	/**
+	 * 统计未上架书籍数量
+	 * @return
+	 */
+	@Select("select count(book_id) from v_book where book_delete=1")
+	int getDeleteBookLen();
 	
 	/**
 	 * 查询未上架书籍
+	 * @param len
 	 * @param offset
 	 * @return
 	 */
-	@Select("select * from v_book where book_delete=1 limit 6 offset #{offset}")
-	@Results(value = { 
-			@Result(column = "book_id", property = "bookid"),  
-			@Result(column = "book_isbn", property = "isbn"),
-			@Result(column = "book_name", property = "bookname"), 
-			@Result(column = "book_author", property = "author"),
-			@Result(column = "book_publish", property = "publish"), 
-			@Result(column = "book_kind", property = "kind"),
-			@Result(column = "book_summary", property = "summary"),
-			@Result(column = "book_publtime", property = "publtime"),
-			@Result(column = "book_cover", property = "cover"), 
-			@Result(column = "book_price", property = "price"),
-			@Result(column = "book_storage", property = "storage"),
-			@Result(column = "book_volume", property = "volume"), 
-			@Result(column = "book_score", property = "score"),
-			@Result(column = "book_delete", property = "delete"),})
-	List<Book> getDeleteBook(@Param("offset")int offset);
+	@Select("select * from v_book where book_delete=1 limit #{len} offset #{offset}")
+	@ResultMap("book")
+	List<Book> getDeleteBook(@Param("len") int len, @Param("offset")int offset);
 }

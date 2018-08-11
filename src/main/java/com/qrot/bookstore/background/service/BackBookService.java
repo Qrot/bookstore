@@ -2,6 +2,7 @@ package com.qrot.bookstore.background.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.qrot.bookstore.background.mapper.BookMapper;
@@ -29,6 +30,15 @@ public class BackBookService {
 	}
 	
 	/**
+	 * 修改书籍信息
+	 * @param book
+	 */
+	public void updateBook(Book book) {
+		bookMapper.updateBookInfo(book);
+		bookMapper.updateBook(book);
+	}
+	
+	/**
 	 * 书籍上架
 	 * @param bookid
 	 */
@@ -45,41 +55,50 @@ public class BackBookService {
 	}
 	
 	/**
-	 * 修改某本书的变动信息
-	 * @param book
-	 */
-	public void updateBook(Book book) {
-		bookMapper.update(book);
-	}
-	
-	/**
 	 * 得到某一本书的信息信息
 	 * @param bookid
 	 * @return
 	 */
-	public Book getOneBook(int bookid) {
-		return bookMapper.getOneBook(bookid);
+	public Book getBookByID(int bookid) {
+		return bookMapper.getBookByID(bookid);
+	}
+	
+	/**
+	 * 统计全部书籍数量
+	 * @return
+	 */
+	public int getAllBookLen() {
+		return bookMapper.getAllBookLen();
 	}
 	
 	/**
 	 * 获得指定行的书籍信息
 	 * 
-	 * @param start
+	 * @param len  分页长度
 	 * @param offset
 	 * @return
 	 */
-	public List<Book> getSomeBook(int start,int offset){
-		return bookMapper.getSomeBook(start, offset);
+	public List<Book> getAllBook(int len,int offset){
+		return bookMapper.getAllBook(len, offset);
 	}
 	
 	/**
-	 * 获得某个类别的六行书籍信息
+	 * 统计指定类别的书籍数量
+	 * @return
+	 */
+	public int getKindBookLen(String kind) {
+		return bookMapper.getKindBookLen(kind);
+	}
+	
+	/**
+	 * 获得某个类别的某些行的书籍信息
 	 * @param kind  类别
+	 * @param len  分页长度
 	 * @param offset 偏移量
 	 * @return
 	 */
-	public List<Book> getKindBook(String kind,int offset){
-		return bookMapper.getKindBook(kind, offset);
+	public List<Book> getKindBook(String kind,int len,int offset){
+		return bookMapper.getKindBook(kind, len,offset);
 	}
 	
 	/**
@@ -91,13 +110,30 @@ public class BackBookService {
 	}
 	
 	/**
+	 * 统计书籍模糊查询结果数量
+	 * @param text
+	 * @return
+	 */
+	public int getSelectBookLen(String text) {
+		return bookMapper.getSelectBookLen(text);
+	}
+	
+	/**
 	 * 对书籍进行模糊查询
 	 * @param text
 	 * @param offset
 	 * @return
 	 */
-	public List<Book> selectBook(String text,int offset){
-		return bookMapper.selectBook(text, offset);
+	public List<Book> selectBook(String text, int len, int offset){
+		return bookMapper.selectBook(text, len, offset);
+	}
+	
+	/**
+	 * 统计未上架书籍数量
+	 * @return
+	 */
+	public int getDeleteBookLen() {
+		return bookMapper.getDeleteBookLen();
 	}
 	
 	/**
@@ -105,7 +141,7 @@ public class BackBookService {
 	 * @param offset
 	 * @return
 	 */
-	public List<Book> getDeleteBook(int offset){
-		return bookMapper.getDeleteBook(offset);
+	public List<Book> getDeleteBook(int len, int offset){
+		return bookMapper.getDeleteBook(len, offset);
 	}
 }

@@ -27,7 +27,7 @@ public class BookController {
 	 * @param book
 	 * @return
 	 */
-	@PostMapping(path="/addbook",consumes="application/json",produces="application/json")
+	@PostMapping(path="/addBook",consumes="application/json",produces="application/json")
 	@ResponseBody
 	public String add(Book book) {
 		
@@ -37,11 +37,24 @@ public class BookController {
 	}
 	
 	/**
+	 * 修改书籍信息
+	 * @param bookid
+	 * @param book
+	 * @return
+	 */
+	@PutMapping(path="/updatebook/{bookid}")
+	@ResponseBody
+	public String update(@PathVariable int bookid, Book book) {
+		service.updateBook(book);
+		return "{msg: 'ok'}";
+	}
+	
+	/**
 	 * 书籍上架
 	 * @param id
 	 * @return
 	 */
-	@PutMapping(path="/recoverbook/{id}",consumes="application/json",produces="application/json")
+	@PutMapping(path="/recoverBook/{id}")
 	@ResponseBody
 	public String recoverBook(@PathVariable int id) {
 		service.recoverBook(id);
@@ -53,7 +66,7 @@ public class BookController {
 	 * @param bookid
 	 * @return
 	 */
-	@PutMapping(path="/removebook/{bookid}",consumes="application/json",produces="application/json")
+	@PutMapping(path="/removebook/{bookid}")
 	@ResponseBody
 	public String removeBook(@PathVariable int bookid) {
 		service.removeBook(bookid);
@@ -61,75 +74,113 @@ public class BookController {
 	}
 	
 	/**
-	 * 修改书籍变动信息
+	 * 通过bookid查询书籍信息
+	 * 
 	 * @param bookid
-	 * @param book
 	 * @return
 	 */
-	@PutMapping(path="/updatebook/{bookid}",consumes="application/json",produces="application/json")
-	@ResponseBody
-	public String update(@PathVariable int bookid, Book book) {
-		service.updateBook(book);
-		return "{msg: 'ok'}";
-	}
-	
-	@GetMapping(path="/getbook/{bookid}",consumes="application/json",produces="application/json")
+	@GetMapping(path="/getbook/{bookid}")
 	@ResponseBody
 	public Book getOneBook(@PathVariable int bookid) {
-		return service.getOneBook(bookid);
+		return service.getBookByID(bookid);
 	}
 	
 	/**
-	 * 获得指定行的书籍信息
+	 * 统计全部书籍数量
+	 * @return
+	 */
+	@GetMapping(path="/len/getAllBook")
+	@ResponseBody
+	public int getAllBookLen() {
+		return service.getAllBookLen();
+	}
+	
+	/**
+	 * 获得指定哪些行的书籍信息
 	 * 
-	 * @param start
+	 * @param len
 	 * @param offset
 	 * @return
 	 */
-	@GetMapping(path="/getsomebook",consumes="application/json",produces="application/json")
+	@GetMapping(path="/getAllBook")
 	@ResponseBody
-	public List<Book> getSomeBook(
-			@RequestParam(name="s", defaultValue="10",required=false) int start,
+	public List<Book> getAllBook(
+			@RequestParam(name="l", defaultValue="6",required=false) int len,
 			@RequestParam(name="o", defaultValue="0", required=false) int offset){
-		return service.getSomeBook(start, offset);
+		return service.getAllBook(len, offset);
 	}
 	
 	/**
-	 * 获得某个类别的六行书籍信息
+	 * 统计指定类别的书籍数量
+	 * @return
+	 */
+	@GetMapping(path="/len/kindBook")
+	@ResponseBody
+	public int getKindBookLen(@RequestParam(name="k", defaultValue="''", required=true) String kind) {
+		return service.getKindBookLen(kind);
+	}
+	
+	/**
+	 * 获得某个类别的书籍信息
 	 * @param kind  类别
+	 * @param len   长度
 	 * @param offset 偏移量
 	 * @return
 	 */
-	@GetMapping(path="/getkindbook",consumes="application/json",produces="application/json")
+	@GetMapping(path="/kindBook")
 	@ResponseBody
 	public List<Book> getKindBook(
-			@RequestParam(name="k", required=true) String kind,
+			@RequestParam(name="k", defaultValue="''", required=true) String kind,
+			@RequestParam(name="l", defaultValue="6",required=false) int len,
 			@RequestParam(name="o", defaultValue="0", required=false) int offset){
-		return service.getKindBook(kind, offset);
+		return service.getKindBook(kind, len, offset);
 	}
 	
 	/**
 	 * 得到书籍的所有分类
 	 * @return
 	 */
-	@GetMapping(path="/getkind")
+	@GetMapping(path="/getKind")
 	@ResponseBody
 	public List<String> getkind(){
 		return service.getkind();
 	}
 	
 	/**
+	 * 统计书籍模糊查询结果数量
+	 * @param text
+	 * @return
+	 */
+	@GetMapping(path="/len/selectBook")
+	@ResponseBody
+	public int getSelectBookLen(@RequestParam(name="t", defaultValue="''", required=true) String text) {
+		return service.getSelectBookLen(text);
+	}
+	
+	/**
 	 * 模糊查询
 	 * @param text
+	 * @param len
 	 * @param offset
 	 * @return
 	 */
-	@GetMapping(path="/selectbook")
+	@GetMapping(path="/selectBook")
 	@ResponseBody
 	public List<Book> selectBook(
-			@RequestParam(name="t", required=true) String text,
+			@RequestParam(name="t", defaultValue="''",required=true) String text,
+			@RequestParam(name="l", defaultValue="6",required=false) int len,
 			@RequestParam(name="o", defaultValue="0", required=false) int offset){
-		return service.selectBook(text, offset);
+		return service.selectBook(text, len, offset);
+	}
+	
+	/**
+	 * 统计未上架书籍数量
+	 * @return
+	 */
+	@GetMapping(path="/len/deleteBook")
+	@ResponseBody
+	public int getDeleteBookLen() {
+		return service.getDeleteBookLen();
 	}
 	
 	/**
@@ -137,10 +188,11 @@ public class BookController {
 	 * @param offset
 	 * @return
 	 */
-	@GetMapping(path="/getdeletebook")
+	@GetMapping(path="/getDeleteBook")
 	@ResponseBody
 	public List<Book> getDeleteBook(
+			@RequestParam(name="l", defaultValue="6",required=false) int len,
 			@RequestParam(name="o", defaultValue="0", required=false) int offset){
-		return service.getDeleteBook(offset);
+		return service.getDeleteBook(len, offset);
 	}
 }

@@ -2,6 +2,9 @@ package com.qrot.bookstore.background.model;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * 订单实体类
@@ -17,9 +20,20 @@ public class Orders {
 	private String orderName;
 	private String orderAddress;
 	private String orderPhone;
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
 	private Timestamp orderTime;
 	
+	private List<VItemBook> itemList;
+	
 	public Orders() {}
+
+	public List<VItemBook> getItemList() {
+		return itemList;
+	}
+
+	public void setItemList(List<VItemBook> itemList) {
+		this.itemList = itemList;
+	}
 
 	public int getOrderID() {
 		return orderID;
