@@ -30,7 +30,7 @@ public class OrdersController {
 	 * @param id
 	 * @return
 	 */
-	@GetMapping(path="/getOrder/{id}")
+	@GetMapping(path="/getOrder/{id}",consumes="application/json",produces="application/json")
 	@ResponseBody
 	public Orders loadOrder(@PathVariable int id) {
 		return service.loadOrder(id);
@@ -53,7 +53,7 @@ public class OrdersController {
 	 * @param id
 	 * @return
 	 */
-	@GetMapping(path="/getItems/{id}")
+	@GetMapping(path="/getItems/{id}",consumes="application/json",produces="application/json")
 	@ResponseBody
 	public List<VItemBook> getItems(@PathVariable int id){
 		return service.getItems(id);

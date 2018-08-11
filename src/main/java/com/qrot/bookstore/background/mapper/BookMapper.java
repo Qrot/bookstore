@@ -58,7 +58,7 @@ public interface BookMapper {
 	 * @param book
 	 */
 	@Update("update book_info set book_author=#{author}, book_publish=#{publish}, book_kind=#{kind},"
-			+ "book_summary=#{book_summary}, book_publtime=#{book_publtime} where book_id=#{bookid}")
+			+ "book_summary=#{summary}, book_publtime=#{publtime} where book_id=#{bookid}")
 	@Results(value = { 
 			@Result(column = "book_id", property = "bookid"),
 			@Result(column = "book_author", property = "author"),

@@ -27,7 +27,7 @@ public class BookController {
 	 * @param book
 	 * @return
 	 */
-	@PostMapping(path="/addBook",consumes="application/json",produces="application/json")
+	@PostMapping(path="/addBook")
 	@ResponseBody
 	public String add(Book book) {
 		
@@ -42,9 +42,9 @@ public class BookController {
 	 * @param book
 	 * @return
 	 */
-	@PutMapping(path="/updatebook/{bookid}")
+	@PutMapping(path="/updateBook/{bookid}")
 	@ResponseBody
-	public String update(@PathVariable int bookid, Book book) {
+	public String updateBook(@PathVariable int bookid, Book book) {
 		service.updateBook(book);
 		return "{msg: 'ok'}";
 	}
@@ -54,7 +54,7 @@ public class BookController {
 	 * @param id
 	 * @return
 	 */
-	@PutMapping(path="/recoverBook/{id}")
+	@PutMapping(path="/recoverBook/{id}",consumes="application/json",produces="application/json")
 	@ResponseBody
 	public String recoverBook(@PathVariable int id) {
 		service.recoverBook(id);
@@ -66,7 +66,7 @@ public class BookController {
 	 * @param bookid
 	 * @return
 	 */
-	@PutMapping(path="/removebook/{bookid}")
+	@PutMapping(path="/removeBook/{bookid}",consumes="application/json",produces="application/json")
 	@ResponseBody
 	public String removeBook(@PathVariable int bookid) {
 		service.removeBook(bookid);
@@ -79,7 +79,7 @@ public class BookController {
 	 * @param bookid
 	 * @return
 	 */
-	@GetMapping(path="/getbook/{bookid}")
+	@GetMapping(path="/getBook/{bookid}")
 	@ResponseBody
 	public Book getOneBook(@PathVariable int bookid) {
 		return service.getBookByID(bookid);
