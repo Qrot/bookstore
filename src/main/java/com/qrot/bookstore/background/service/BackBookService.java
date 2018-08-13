@@ -143,4 +143,41 @@ public class BackBookService {
 	public List<Book> getDeleteBook(int len, int offset){
 		return bookMapper.getDeleteBook(len, offset);
 	}
+	
+	/**
+	 * 统计已上架书籍数量
+	 * @return
+	 */
+	public int getSellingBookLen() {
+		return bookMapper.getSellingBookLen();
+	}
+	
+	/**
+	 * 查询已上架书籍
+	 * @param offset
+	 * @return
+	 */
+	public List<Book> getSellingBook(int len, int offset){
+		return bookMapper.getSellingBook(len, offset);
+	}
+	
+	/**
+	 * 统计库存低于某值的已上架书籍数量
+	 * @param low
+	 * @return
+	 */
+	public int getLowerStorageLen(int low) {
+		return bookMapper.getLowerStorageLen(low);
+	}
+	
+	/**
+	 * 查询库存低于某值的书籍
+	 * @param low
+	 * @param len
+	 * @param offset
+	 * @return
+	 */
+	public List<Book> getLowerStorage(int low, int len, int offset){
+		return bookMapper.getLowerStorage(low, len, offset);
+	}
 }

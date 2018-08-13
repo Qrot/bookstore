@@ -27,16 +27,6 @@ public interface BookMapper {
 	 */
 	@Insert("insert into book_info(book_isbn,book_name,book_author,book_publish,book_kind,book_summary,book_publtime,book_cover) "
 			+ "values(#{isbn},#{bookname},#{author},#{publish},#{kind},#{summary},#{publtime},#{cover})")
-	@Results(value = { 
-			@Result(column = "book_id", property = "bookid"),  
-			@Result(column = "book_isbn", property = "isbn"),
-			@Result(column = "book_name", property = "bookname"), 
-			@Result(column = "book_author", property = "author"),
-			@Result(column = "book_publish", property = "publish"), 
-			@Result(column = "book_kind", property = "kind"),
-			@Result(column = "book_summary", property = "summary"),
-			@Result(column = "book_publtime", property = "publtime"),
-			@Result(column = "book_cover", property = "cover"),})
 	void addBookInfo(Book book);
 	
 	/**
@@ -45,12 +35,6 @@ public interface BookMapper {
 	 */
 	@Insert("insert into book(book_id,book_price,book_storage,book_volume,book_score,book_delete) "
 			+ "values(LAST_INSERT_ID(),#{price},#{storage},#{volume},#{score},#{delete})")
-	@Results(value = { 
-			@Result(column = "book_price", property = "price"),
-			@Result(column = "book_storage", property = "storage"),
-			@Result(column = "book_volume", property = "volume"), 
-			@Result(column = "book_score", property = "score"),
-			@Result(column = "book_delete",property = "delete")})
 	void addBook(Book book);
 	
 	/**
@@ -59,13 +43,6 @@ public interface BookMapper {
 	 */
 	@Update("update book_info set book_author=#{author}, book_publish=#{publish}, book_kind=#{kind},"
 			+ "book_summary=#{summary}, book_publtime=#{publtime} where book_id=#{bookid}")
-	@Results(value = { 
-			@Result(column = "book_id", property = "bookid"),
-			@Result(column = "book_author", property = "author"),
-			@Result(column = "book_publish", property = "publish"), 
-			@Result(column = "book_kind", property = "kind"),
-			@Result(column = "book_summary", property = "summary"),
-			@Result(column = "book_publtime", property = "publtime"),})
 	void updateBookInfo(Book book);
 	
 	/**
@@ -73,10 +50,6 @@ public interface BookMapper {
 	 * @param book
 	 */
 	@Update("update book set book_price=#{price},book_storage=#{storage} where book_id=#{bookid}")
-	@Results(value = { 
-			@Result(column = "book_id", property = "bookid"),
-			@Result(column = "book_price", property = "price"),
-			@Result(column = "book_storage", property = "storage"),})
 	void updateBook(Book book);
 	
 	/**
@@ -84,8 +57,6 @@ public interface BookMapper {
 	 * @param bookid
 	 */
 	@Update("update book set book_delete = 1 where book_id=#{bookid}")
-	@Results(value = { 
-			@Result(column = "book_id", property = "bookid") })
 	void removeBook(int bookid);
 	
 	/**
@@ -93,8 +64,6 @@ public interface BookMapper {
 	 * @param bookid
 	 */
 	@Update("update book set book_delete = 0 where book_id=#{bookid}")
-	@Results(value = { 
-			@Result(column = "book_id", property = "bookid") })
 	void recoverBook(int bookid);
 	
 	/**
@@ -142,7 +111,7 @@ public interface BookMapper {
 	 * @param kind
 	 * @return
 	 */
-	@Select("select count(book_id) from v_book where book_kind=#{kind}")
+	@Select("select count(book_id) from v_book where book_kind=#{kind} and book_delete=0")
 	int getKindBookLen(@Param("kind")String kind);
 	
 	/**
@@ -152,7 +121,7 @@ public interface BookMapper {
 	 * @param offset  偏移量
 	 * @return
 	 */
-	@Select("select * from v_book where book_kind=#{kind} limit #{len} offset #{offset}")
+	@Select("select * from v_book where book_kind=#{kind} and book_delete=0 limit #{len} offset #{offset}")
 	@ResultMap("book")
 	List<Book> getKindBook (
 			@Param("kind")String kind,
@@ -171,10 +140,10 @@ public interface BookMapper {
 	 * @param text
 	 * @return
 	 */
-	@Select("select count(book_id) from v_book where book_name regexp #{text} "
+	@Select("select count(book_id) from v_book where book_delete=0 and (book_name regexp #{text} "
 			+ "or book_author regexp #{text} "
 			+ "or book_publish regexp #{text} "
-			+ "or book_kind regexp #{text}")
+			+ "or book_kind regexp #{text})")
 	int getSelectBookLen(@Param("text") String text);
 	
 	/**
@@ -184,11 +153,11 @@ public interface BookMapper {
 	 * @param offset
 	 * @return
 	 */
-	@Select("select * from v_book where book_name regexp #{text} "
+	@Select("select * from v_book where book_delete=0 and (book_name regexp #{text} "
 			+ "or book_author regexp #{text} "
 			+ "or book_publish regexp #{text} "
 			+ "or book_kind regexp #{text}"
-			+ "limit #{len} offset #{offset}")
+			+ "limit #{len} offset #{offset})")
 	@ResultMap("book")
 	List<Book> selectBook(
 			@Param("text") String text, 
@@ -211,4 +180,44 @@ public interface BookMapper {
 	@Select("select * from v_book where book_delete=1 limit #{len} offset #{offset}")
 	@ResultMap("book")
 	List<Book> getDeleteBook(@Param("len") int len, @Param("offset")int offset);
+	
+	/**
+	 * 统计已上架书籍数量
+	 * @return
+	 */
+	@Select("select count(book_id) from v_book where book_delete=0")
+	int getSellingBookLen();
+	
+	/**
+	 * 查询已上架书籍
+	 * @param len
+	 * @param offset
+	 * @return
+	 */
+	@Select("select * from v_book where book_delete=0 limit #{len} offset #{offset}")
+	@ResultMap("book")
+	List<Book> getSellingBook(@Param("len") int len, @Param("offset")int offset);
+	
+	/**
+	 * 统计库存低于某值的已上架书籍数量
+	 * 
+	 * @param low
+	 * @return
+	 */
+	@Select("select count(book_id) from v_book where book_delete=0 and book_storage<=#{low}")
+	int getLowerStorageLen(@Param("low")int low);
+	
+	/**
+	 * 查询库存低于某值的书籍
+	 * @param low
+	 * @param len
+	 * @param offset
+	 * @return
+	 */
+	@Select("select * from v_book where book_delete=0 and book_storage <= #{low} limit #{len} offset #{offset}")
+	@ResultMap("book")
+	List<Book> getLowerStorage(
+			@Param("low")int low, 
+			@Param("len") int len, 
+			@Param("offset")int offset);
 }

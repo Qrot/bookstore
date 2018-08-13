@@ -195,4 +195,54 @@ public class BookController {
 			@RequestParam(name="o", defaultValue="0", required=false) int offset){
 		return service.getDeleteBook(len, offset);
 	}
+	
+	/**
+	 * 统计已上架书籍数量
+	 * @return
+	 */
+	@GetMapping(path="/len/sellingBook")
+	@ResponseBody
+	public int getSellingBookLen() {
+		return service.getSellingBookLen();
+	}
+	
+	/**
+	 * 查询已上架书籍
+	 * @param offset
+	 * @return
+	 */
+	@GetMapping(path="/getSellingBook")
+	@ResponseBody
+	public List<Book> getSellingBook(
+			@RequestParam(name="l", defaultValue="6",required=false) int len,
+			@RequestParam(name="o", defaultValue="0", required=false) int offset){
+		return service.getSellingBook(len, offset);
+	}
+
+	/**
+	 * 统计库存低于某值的已上架书籍数量
+	 * @param low
+	 * @return
+	 */
+	@GetMapping(path="/len/lowerStorage")
+	@ResponseBody
+	public int getLowerStorageLen(@RequestParam(name="lo", defaultValue="5",required=true) int low) {
+		return service.getLowerStorageLen(low);
+	}
+	
+	/**
+	 * 查询库存低于某值的书籍
+	 * @param low
+	 * @param len
+	 * @param offset
+	 * @return
+	 */
+	@GetMapping(path="/getLowerStorage")
+	@ResponseBody
+	public List<Book> getLowerStorage(
+			@RequestParam(name="lo", defaultValue="5",required=true) int low,
+			@RequestParam(name="l", defaultValue="6",required=false) int len,
+			@RequestParam(name="o", defaultValue="0", required=false) int offset){
+		return service.getLowerStorage(low, len, offset);
+	}
 }

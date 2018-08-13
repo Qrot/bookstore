@@ -41,7 +41,7 @@ public class OrdersController {
 	 * @param order
 	 * @return
 	 */
-	@PutMapping(path="/updateOrder",consumes="application/json",produces="application/json")
+	@PutMapping(path="/updateOrder")
 	@ResponseBody
 	public String updateOrder(Orders order) {
 		service.updateOrder(order);
@@ -78,12 +78,11 @@ public class OrdersController {
 	 * @param end   终止时间
 	 * @return
 	 */
-	@GetMapping(path="/getOrderLen/byTime",consumes="application/json",produces="application/json")
+	@GetMapping(path="/getOrderLen/byTime")
 	@ResponseBody
 	public int getLenByTime(
 			@RequestParam(name="s", defaultValue="1970-01-01",required=false) String start,
 			@RequestParam(name="e",required=false) String end) {
-		
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		Date sta = null;
 		Date en = null;
@@ -109,7 +108,7 @@ public class OrdersController {
 	 * @param offset偏移量
 	 * @return
 	 */
-	@GetMapping(path="/getOrderItem/byTime",consumes="application/json",produces="application/json")
+	@GetMapping(path="/getOrderItem/byTime")
 	@ResponseBody
 	public List<Orders> getOrderByTime(
 			@RequestParam(name="s", defaultValue="1970-01-01",required=false) String start,
@@ -139,7 +138,7 @@ public class OrdersController {
 	 * @param state  订单状态
 	 * @return
 	 */
-	@GetMapping(path="/getOrderLen/byState",consumes="application/json",produces="application/json")
+	@GetMapping(path="/getOrderLen/byState")
 	@ResponseBody
 	public int getLenByState(
 			@RequestParam(name="s", required=false) char state) {
@@ -154,7 +153,7 @@ public class OrdersController {
 	 * @param offset  偏移量
 	 * @return
 	 */
-	@GetMapping(path="/getOrderItem/byState",consumes="application/json",produces="application/json")
+	@GetMapping(path="/getOrderItem/byState")
 	@ResponseBody
 	public List<Orders> getOrderByState(
 			@RequestParam(name="s", defaultValue="1",required=false) char state,
@@ -171,7 +170,7 @@ public class OrdersController {
 	 * @param state 订单状态
 	 * @return
 	 */
-	@GetMapping(path="/getOrderLen/byTimeState",consumes="application/json",produces="application/json")
+	@GetMapping(path="/getOrderLen/byTimeState")
 	@ResponseBody
 	public int getLenByTimeAndState(
 			@RequestParam(name="st", defaultValue="1970-01-01",required=false) String start,
@@ -205,7 +204,7 @@ public class OrdersController {
 	 * @param offset偏移量
 	 * @return
 	 */
-	@GetMapping(path="/getOrderItem/byTimeState",consumes="application/json",produces="application/json")
+	@GetMapping(path="/getOrderItem/byTimeState")
 	@ResponseBody
 	public List<Orders> getOrderByTimeAndState(
 			@RequestParam(name="st", defaultValue="1970-01-01",required=false) String start,

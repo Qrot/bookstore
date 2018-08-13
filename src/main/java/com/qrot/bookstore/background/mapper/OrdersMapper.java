@@ -46,10 +46,6 @@ public interface OrdersMapper {
 	 * @param order
 	 */
 	@Update("update orders set order_state=#{state} where order_id=#{id}")
-	@Results(value= {
-			@Result(column="order_state",property="orderState"),
-			@Result(column="order_id",property="orderID"),
-	})
 	void updateOrder(Orders order);
 	
 	/**
