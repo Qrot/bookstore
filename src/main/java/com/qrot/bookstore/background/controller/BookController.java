@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,8 +29,7 @@ public class BookController {
 	 * @return
 	 */
 	@PostMapping(path="/addBook")
-	@ResponseBody
-	public String add(Book book) {
+	public String add(@RequestBody Book book) {
 		
 		service.addBook(book);
 		//返回状态码
@@ -42,9 +42,8 @@ public class BookController {
 	 * @param book
 	 * @return
 	 */
-	@PutMapping(path="/updateBook/{bookid}")
-	@ResponseBody
-	public String updateBook(@PathVariable int bookid, Book book) {
+	@PutMapping(path="/updateBook/{bookid}",consumes="application/json",produces="application/json")
+	public String updateBook(@PathVariable int bookid, @RequestBody Book book) {
 		service.updateBook(book);
 		return "{msg: 'ok'}";
 	}
@@ -55,7 +54,6 @@ public class BookController {
 	 * @return
 	 */
 	@PutMapping(path="/recoverBook/{id}",consumes="application/json",produces="application/json")
-	@ResponseBody
 	public String recoverBook(@PathVariable int id) {
 		service.recoverBook(id);
 		return "{msg:'ok'}";
@@ -67,7 +65,6 @@ public class BookController {
 	 * @return
 	 */
 	@PutMapping(path="/removeBook/{bookid}",consumes="application/json",produces="application/json")
-	@ResponseBody
 	public String removeBook(@PathVariable int bookid) {
 		service.removeBook(bookid);
 		return "{msg:'ok'}";
