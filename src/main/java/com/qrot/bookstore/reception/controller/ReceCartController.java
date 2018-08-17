@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -45,6 +47,16 @@ public class ReceCartController {
 	public List<Cart> select(@PathVariable int id) {
 		
 		return cartService.select(id);
+	}
+
+	/**
+	 * 添加购物车
+	 * @param cart
+	 */
+	@PostMapping
+	@ResponseBody
+	public void create(@RequestBody Cart cart) {
+		cartService.create(cart);
 	}
 
 }

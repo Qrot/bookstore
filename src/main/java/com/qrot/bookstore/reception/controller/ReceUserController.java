@@ -47,16 +47,19 @@ public class ReceUserController {
 	 */
 	@GetMapping("/load")
 	@ResponseBody
-	public User load(
+	public String load(
 			@RequestParam(name="n", required=false) String name,
 			@RequestParam(name="p", required=false) String password) {
+		String msg;
 		User user = userService.load(name, password);
 		
 		if(user == null) {
-			return null;
+			msg = "用户名或密码错误！";
+			return msg;
 		}
 		
-		return user;
+		msg = "OK";
+		return msg;
 	}
 	
 	

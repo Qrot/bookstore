@@ -35,5 +35,14 @@ public class ReceCartService {
 	public List<Cart> select(int id) {
 		return cartMapper.select(id);
 	}
+	
+	/**
+	 * 添加购物车
+	 * @param cart
+	 * @return
+	 */
+	public Cart create(Cart cart) {
+		return cartMapper.create(cart);
+	}
 
 }

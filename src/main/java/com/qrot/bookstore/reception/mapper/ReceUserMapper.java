@@ -78,7 +78,7 @@ public interface ReceUserMapper {
 	 * @param user
 	 */
 	@Insert("insert into user_info(user_id,user_sex,user_phone,user_email) "
-			+ "values((last_insert_id()) ,#{name}, #{password}, #{userHead})")
+			+ "values((last_insert_id()) ,#{sex}, #{phone}, #{email})")
 	@Results(value = { 
 			@Result(column = "user_id", property = "id"), 
 			@Result(column = "user_name", property = "name"),

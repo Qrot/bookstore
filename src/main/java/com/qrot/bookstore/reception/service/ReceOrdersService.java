@@ -1,5 +1,7 @@
 package com.qrot.bookstore.reception.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +26,6 @@ public class ReceOrdersService {
 	 */
 	@Transactional
 	public void subOrder(Orders order) {
-		System.out.println("ok");
 		ordersMapper.subOrder(order);
 		
 		// 循环插入订单项
@@ -33,6 +34,24 @@ public class ReceOrdersService {
 			ordersMapper.updateBookVolume(item);
 		}
 		
+	}
+	
+	/**
+	 * 删除订单
+	 * @param orderId
+	 */
+	@Transactional
+	public void deleteOrder(int orderId) {
+		ordersMapper.deleteOrder(orderId);
+	}
+	
+	/**
+	 * 查询用户订单
+	 * @param userId
+	 * @return
+	 */
+	public List<Orders> selectUserOrder(int userId){
+		return ordersMapper.selectUserOrder(userId);
 	}
 
 }
