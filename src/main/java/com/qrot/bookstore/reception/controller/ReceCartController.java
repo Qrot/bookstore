@@ -70,6 +70,16 @@ public class ReceCartController {
 	}
 	
 	/**
+	 * 删除单个购物车订单项
+	 * @param cart
+	 */
+	@PostMapping("/delete")
+	@ResponseBody
+	public void delete(@RequestBody Cart cart) {
+		cartService.delete(cart);
+	}
+	
+	/**
 	 * 清空该用户购物车
 	 * @param userId
 	 */

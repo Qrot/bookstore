@@ -67,6 +67,13 @@ public interface ReceCartMapper {
 	Cart update(Cart cart);
 	
 	/**
+	 * 删除单个购物车订单项
+	 * @param cart
+	 */
+	@Delete("delete from cart where user_id=#{userId} and book_id=#{bookId}")
+	void delete(Cart cart);
+	
+	/**
 	 * 清空该用户购物车
 	 * @param userId
 	 */

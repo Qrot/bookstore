@@ -50,8 +50,16 @@ public class ReceCartService {
 	 * @param cart
 	 * @return
 	 */
-	public Cart update(Cart cart) {
-		return cartMapper.update(cart);
+	public void update(Cart cart) {
+		cartMapper.update(cart);
+	}
+	
+	/**
+	 * 删除单个购物车订单项
+	 * @param cart
+	 */
+	public void delete(Cart cart) {
+		cartMapper.delete(cart);
 	}
 	
 	/**
