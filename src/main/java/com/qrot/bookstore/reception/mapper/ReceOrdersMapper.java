@@ -86,7 +86,7 @@ public interface ReceOrdersMapper {
 	 * 删除订单
 	 * @param orderId
 	 */
-	@Delete("update orders set order_state = '4' where order_id = #{orderId}")
+	@Update("update orders set order_state = '4' where order_id = #{orderId}")
 	void deleteOrder(int orderId);
 
 }
