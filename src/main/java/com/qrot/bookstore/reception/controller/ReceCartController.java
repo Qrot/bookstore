@@ -53,10 +53,29 @@ public class ReceCartController {
 	 * 添加购物车
 	 * @param cart
 	 */
-	@PostMapping
+	@PostMapping("/create")
 	@ResponseBody
 	public void create(@RequestBody Cart cart) {
 		cartService.create(cart);
 	}
-
+	
+	/**
+	 * 修改购物车订单项
+	 * @param cart
+	 */
+	@PostMapping("/update")
+	@ResponseBody
+	public void update(@RequestBody Cart cart) {
+		cartService.update(cart);
+	}
+	
+	/**
+	 * 清空该用户购物车
+	 * @param userId
+	 */
+	@PostMapping("/empty")
+	@ResponseBody
+	public void empty(int userId) {
+		cartService.empty(userId);
+	}
 }

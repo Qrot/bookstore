@@ -2,11 +2,13 @@ package com.qrot.bookstore.reception.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.qrot.bookstore.reception.model.Cart;
 
@@ -55,5 +57,20 @@ public interface ReceCartMapper {
 	 */
 	@Insert("insert into cart values('userId','bookId','quantity')")
 	Cart create(Cart cart);
+	
+	/**
+	 * 修改购物车订单项数量
+	 * @param cart
+	 * @return
+	 */
+	@Update("update cart set cart_quantity=#{quantity} where book_id=#{bookId} and user_id=#{userId}")
+	Cart update(Cart cart);
+	
+	/**
+	 * 清空该用户购物车
+	 * @param userId
+	 */
+	@Delete("delete from cart where user_id=#{userId}")
+	void empty(int userId);
 
 }

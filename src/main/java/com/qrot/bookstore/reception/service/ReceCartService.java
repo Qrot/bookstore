@@ -44,5 +44,22 @@ public class ReceCartService {
 	public Cart create(Cart cart) {
 		return cartMapper.create(cart);
 	}
+	
+	/**
+	 * 修改购物车订单项
+	 * @param cart
+	 * @return
+	 */
+	public Cart update(Cart cart) {
+		return cartMapper.update(cart);
+	}
+	
+	/**
+	 * 清空该用户购物车
+	 * @param userId
+	 */
+	public void empty(int userId) {
+		cartMapper.empty(userId);
+	}
 
 }
