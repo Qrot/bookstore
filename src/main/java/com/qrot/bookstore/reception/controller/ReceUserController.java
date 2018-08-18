@@ -63,12 +63,18 @@ public class ReceUserController {
 	}
 	
 	
-	@PostMapping
+	@PostMapping("/create")
 	@ResponseBody
 	public void create(@RequestBody User user) {
 		
 		userService.create(user);
 		
+	}
+	
+	@PostMapping("/update")
+	@ResponseBody
+	public void update(@RequestBody User user) {
+		userService.update(user);
 	}
 
 }

@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.qrot.bookstore.reception.model.User;
 
@@ -89,5 +90,19 @@ public interface ReceUserMapper {
 			@Result(column = "user_email", property = "email"), 
 	})
 	void createInfo(User user);
+	
+	/**
+	 * 修改用户密码
+	 * @param user
+	 */
+	@Update("update user set user_password=#{password} where user_id=#{userId}")
+	void updatePwd(User user);
+	
+	/**
+	 * 修改用户信息
+	 * @param user
+	 */
+	@Update("update user_info set user_sex=#{sex},user_phone=#{phone},user_email=#{email} where user_id=#{userId}")
+	void updateInfo(User user);
 
 }
