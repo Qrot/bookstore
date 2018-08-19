@@ -156,8 +156,8 @@ public interface BookMapper {
 	@Select("select * from v_book where book_delete=0 and (book_name regexp #{text} "
 			+ "or book_author regexp #{text} "
 			+ "or book_publish regexp #{text} "
-			+ "or book_kind regexp #{text}"
-			+ "limit #{len} offset #{offset})")
+			+ "or book_kind regexp #{text})"
+			+ "limit #{len} offset #{offset}")
 	@ResultMap("book")
 	List<Book> selectBook(
 			@Param("text") String text, 

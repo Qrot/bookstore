@@ -45,8 +45,8 @@ public interface OrdersMapper {
 	 * 修改订单状态
 	 * @param order
 	 */
-	@Update("update orders set order_state=#{state} where order_id=#{id}")
-	void updateOrder(Orders order);
+	@Update("update orders set order_state=2 where order_id=#{id}")
+	void updateOrder(@Param("id") int id);
 	
 	/**
 	 * 得到某订单的所有项，只含订单项的信息

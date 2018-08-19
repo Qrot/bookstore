@@ -1,8 +1,10 @@
 package com.qrot.bookstore.background.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,12 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.qrot.bookstore.background.model.Book;
 import com.qrot.bookstore.background.service.BackBookService;
+import com.qrot.bookstore.file.FileUtils;
 
 @RestController
 @RequestMapping("/api/1")
+@CrossOrigin
 public class BookController {
 
 	@Autowired
@@ -37,13 +42,36 @@ public class BookController {
 	}
 	
 	/**
+    *
+    * @param file 要上传的文件
+    * @return
+    */
+   @PutMapping("/fileUpload")
+   @ResponseBody
+   public String upload( MultipartFile file, Map<String, Object> map){
+
+       // 要上传的目标文件存放路径
+       String localPath = "./img/cover";
+       // 上传成功或者失败的提示
+       String msg = "";
+
+       if (FileUtils.upload(file, localPath, file.getOriginalFilename())){
+           msg = localPath+"/"+file.getOriginalFilename();
+       }else {
+           msg = "上传失败！";
+
+       }
+	return msg;
+   }
+	
+	/**
 	 * 修改书籍信息
 	 * @param bookid
 	 * @param book
 	 * @return
 	 */
-	@PutMapping(path="/updateBook/{bookid}",consumes="application/json",produces="application/json")
-	public String updateBook(@PathVariable int bookid, @RequestBody Book book) {
+	@PutMapping(path="/updateBook",consumes="application/json",produces="application/json")
+	public String updateBook(@RequestBody Book book) {
 		service.updateBook(book);
 		return "{msg: 'ok'}";
 	}
@@ -102,7 +130,7 @@ public class BookController {
 	@GetMapping(path="/getAllBook")
 	@ResponseBody
 	public List<Book> getAllBook(
-			@RequestParam(name="l", defaultValue="6",required=false) int len,
+			@RequestParam(name="l", defaultValue="5",required=false) int len,
 			@RequestParam(name="o", defaultValue="0", required=false) int offset){
 		return service.getAllBook(len, offset);
 	}
@@ -128,7 +156,7 @@ public class BookController {
 	@ResponseBody
 	public List<Book> getKindBook(
 			@RequestParam(name="k", defaultValue="''", required=true) String kind,
-			@RequestParam(name="l", defaultValue="6",required=false) int len,
+			@RequestParam(name="l", defaultValue="5",required=false) int len,
 			@RequestParam(name="o", defaultValue="0", required=false) int offset){
 		return service.getKindBook(kind, len, offset);
 	}
@@ -165,7 +193,7 @@ public class BookController {
 	@ResponseBody
 	public List<Book> selectBook(
 			@RequestParam(name="t", defaultValue="''",required=true) String text,
-			@RequestParam(name="l", defaultValue="6",required=false) int len,
+			@RequestParam(name="l", defaultValue="5",required=false) int len,
 			@RequestParam(name="o", defaultValue="0", required=false) int offset){
 		return service.selectBook(text, len, offset);
 	}
@@ -188,7 +216,7 @@ public class BookController {
 	@GetMapping(path="/getDeleteBook")
 	@ResponseBody
 	public List<Book> getDeleteBook(
-			@RequestParam(name="l", defaultValue="6",required=false) int len,
+			@RequestParam(name="l", defaultValue="5",required=false) int len,
 			@RequestParam(name="o", defaultValue="0", required=false) int offset){
 		return service.getDeleteBook(len, offset);
 	}
@@ -211,7 +239,7 @@ public class BookController {
 	@GetMapping(path="/getSellingBook")
 	@ResponseBody
 	public List<Book> getSellingBook(
-			@RequestParam(name="l", defaultValue="6",required=false) int len,
+			@RequestParam(name="l", defaultValue="5",required=false) int len,
 			@RequestParam(name="o", defaultValue="0", required=false) int offset){
 		return service.getSellingBook(len, offset);
 	}
@@ -238,7 +266,7 @@ public class BookController {
 	@ResponseBody
 	public List<Book> getLowerStorage(
 			@RequestParam(name="lo", defaultValue="5",required=true) int low,
-			@RequestParam(name="l", defaultValue="6",required=false) int len,
+			@RequestParam(name="l", defaultValue="5",required=false) int len,
 			@RequestParam(name="o", defaultValue="0", required=false) int offset){
 		return service.getLowerStorage(low, len, offset);
 	}
