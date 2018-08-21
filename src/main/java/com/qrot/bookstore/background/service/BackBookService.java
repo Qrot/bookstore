@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.qrot.bookstore.background.mapper.BookMapper;
 import com.qrot.bookstore.background.model.Book;
+import com.qrot.bookstore.util.ImgSrcUtil;
+import com.qrot.bookstore.util.UploadUtil;
 
 /**
  * 关于书籍的业务逻辑：依赖数据访问操作
@@ -23,9 +25,15 @@ public class BackBookService {
 	 * @param book
 	 */
 	public void addBook(Book book) {
-
 		bookMapper.addBookInfo(book);
 		bookMapper.addBook(book);
+	}
+	
+	public String setCover(String img, String imgName) {
+		String localPath = "img";
+		String servicePath = "src/main/resources/static";
+		return UploadUtil.decode(img, imgName, localPath, servicePath);
+		
 	}
 	
 	/**
@@ -59,7 +67,7 @@ public class BackBookService {
 	 * @return
 	 */
 	public Book getBookByID(int bookid) {
-		return bookMapper.getBookByID(bookid);
+		return ImgSrcUtil.getFullPath(bookMapper.getBookByID(bookid));
 	}
 	
 	/**
@@ -78,7 +86,7 @@ public class BackBookService {
 	 * @return
 	 */
 	public List<Book> getAllBook(int len,int offset){
-		return bookMapper.getAllBook(len, offset);
+		return ImgSrcUtil.getFullPath(bookMapper.getAllBook(len, offset));
 	}
 	
 	/**
@@ -97,7 +105,7 @@ public class BackBookService {
 	 * @return
 	 */
 	public List<Book> getKindBook(String kind,int len,int offset){
-		return bookMapper.getKindBook(kind, len,offset);
+		return ImgSrcUtil.getFullPath(bookMapper.getKindBook(kind, len,offset));
 	}
 	
 	/**
@@ -124,7 +132,7 @@ public class BackBookService {
 	 * @return
 	 */
 	public List<Book> selectBook(String text, int len, int offset){
-		return bookMapper.selectBook(text, len, offset);
+		return ImgSrcUtil.getFullPath(bookMapper.selectBook(text, len, offset));
 	}
 	
 	/**
@@ -141,7 +149,7 @@ public class BackBookService {
 	 * @return
 	 */
 	public List<Book> getDeleteBook(int len, int offset){
-		return bookMapper.getDeleteBook(len, offset);
+		return ImgSrcUtil.getFullPath(bookMapper.getDeleteBook(len, offset));
 	}
 	
 	/**
@@ -158,7 +166,7 @@ public class BackBookService {
 	 * @return
 	 */
 	public List<Book> getSellingBook(int len, int offset){
-		return bookMapper.getSellingBook(len, offset);
+		return ImgSrcUtil.getFullPath(bookMapper.getSellingBook(len, offset));
 	}
 	
 	/**
@@ -178,6 +186,6 @@ public class BackBookService {
 	 * @return
 	 */
 	public List<Book> getLowerStorage(int low, int len, int offset){
-		return bookMapper.getLowerStorage(low, len, offset);
+		return ImgSrcUtil.getFullPath(bookMapper.getLowerStorage(low, len, offset));
 	}
 }

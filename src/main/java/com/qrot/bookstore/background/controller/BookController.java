@@ -1,7 +1,6 @@
 package com.qrot.bookstore.background.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,11 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.qrot.bookstore.background.model.Book;
 import com.qrot.bookstore.background.service.BackBookService;
-import com.qrot.bookstore.file.FileUtils;
 
 @RestController
 @RequestMapping("/api/1")
@@ -41,28 +38,16 @@ public class BookController {
 		return "{msg: 'ok'}";
 	}
 	
-	/**
-    *
-    * @param file 要上传的文件
-    * @return
-    */
-   @PutMapping("/fileUpload")
-   @ResponseBody
-   public String upload( MultipartFile file, Map<String, Object> map){
-
-       // 要上传的目标文件存放路径
-       String localPath = "./img/cover";
-       // 上传成功或者失败的提示
-       String msg = "";
-
-       if (FileUtils.upload(file, localPath, file.getOriginalFilename())){
-           msg = localPath+"/"+file.getOriginalFilename();
-       }else {
-           msg = "上传失败！";
-
-       }
-	return msg;
-   }
+	
+	@PostMapping(path="/uploadImg",consumes="application/json",produces="application/json")
+	@ResponseBody
+	public String upload(@RequestBody String img, @RequestParam String imgName){
+		String msg = service.setCover(img,imgName);
+		if(msg==null) {
+			return "{msg:'上传失败！'}";
+		}
+		return msg;
+	}
 	
 	/**
 	 * 修改书籍信息
