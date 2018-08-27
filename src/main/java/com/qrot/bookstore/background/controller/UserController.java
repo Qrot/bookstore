@@ -33,7 +33,10 @@ public class UserController {
 		
 		if(!("admin".equals(name))) {
 			msg = "用户名错误！";
+<<<<<<< HEAD
+=======
 			
+>>>>>>> 31aa3d9c6ed70a098dc076a14b8ce64096521d38
 		}else {
 			User user = service.login(name);
 			if(user.getPassword().equals(password)) {
@@ -41,8 +44,12 @@ public class UserController {
 			}else {
 				msg="密码错误";
 			}
+<<<<<<< HEAD
+		}	
+=======
 		}
 		
+>>>>>>> 31aa3d9c6ed70a098dc076a14b8ce64096521d38
 		return msg;
 	}
 }

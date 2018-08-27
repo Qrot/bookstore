@@ -10,8 +10,11 @@ public class User {
 	private int id;
 	private String name;
 	private String password;
+<<<<<<< HEAD
+=======
 	
 	public void User() {}
+>>>>>>> 31aa3d9c6ed70a098dc076a14b8ce64096521d38
 
 	public int getId() {
 		return id;

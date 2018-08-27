@@ -5,12 +5,12 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 
 public class UploadUtil {
+	
+	private static long imgId = 0;
 
 	// 接收base64编码，转化为图片存储，返回图片存储路径
 	public static String decode(String imgStr, String imgName, String localPath, String servicePath) {
@@ -27,15 +27,8 @@ public class UploadUtil {
 		byte[] data = Base64.decodeBase64(imgStr);
 
 		// 保存路径
-		String path = "";
-		String prefix = imgName.substring(imgName.lastIndexOf(".")+1);
-		try {
-			MessageDigest md5 = MessageDigest.getInstance("MD5");
-			path = md5.digest(imgStr.getBytes()).toString();
-		} catch (NoSuchAlgorithmException e1) {
-			e1.printStackTrace();
-		}
-		path = localPath + "/" + path + "." + prefix;
+		String path = localPath + "/" + imgId + imgName;
+		imgId++;
 		String newPath = servicePath + "/" + path;
 		try {
 			OutputStream out = new FileOutputStream(newPath);

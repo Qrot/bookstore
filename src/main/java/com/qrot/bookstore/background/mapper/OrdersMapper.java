@@ -58,6 +58,7 @@ public interface OrdersMapper {
 			@Result(column="order_id",property="orderID"),
 			@Result(column="book_id",property="bookID"),
 			@Result(column="book_name",property="bookName"),
+			@Result(column="book_cover",property="bookCover"),
 			@Result(column="book_author",property="bookAuthor"),
 			@Result(column="book_publish",property="bookPublish"),
 			@Result(column="book_kind",property="bookKind"),
