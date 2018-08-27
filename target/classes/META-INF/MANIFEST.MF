@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Built-By: TanZhiHua
+Built-By: Amy_o
 Build-Jdk: 10.0.1
 Implementation-Title: bookstore
 Implementation-Version: 0.0.1-SNAPSHOT

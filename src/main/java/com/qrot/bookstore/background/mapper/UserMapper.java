@@ -17,19 +17,13 @@ public interface UserMapper {
 	 * @param name
 	 * @return
 	 */
-<<<<<<< HEAD
+
 	@Select("select * from user where user_name=#{name}")
-=======
-	@Select("select * from v_show_all_user where user_name=#{name}")
->>>>>>> 31aa3d9c6ed70a098dc076a14b8ce64096521d38
 	@Results(value = { 
 			@Result(column = "user_id", property = "id"), 
 			@Result(column = "user_name", property = "name"),
 			@Result(column = "user_password", property = "password"),})
-<<<<<<< HEAD
+
 	User login(@Param("name") String name);
-=======
-	User login(
-			@Param("name") String name);
->>>>>>> 31aa3d9c6ed70a098dc076a14b8ce64096521d38
+
 }
