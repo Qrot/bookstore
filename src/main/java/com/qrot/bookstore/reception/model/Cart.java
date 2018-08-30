@@ -1,5 +1,7 @@
 package com.qrot.bookstore.reception.model;
 
+import java.math.BigDecimal;
+
 /**
  * 购物车实体类
  * 
@@ -10,6 +12,7 @@ public class Cart {
 	int userId;
 	int bookId;
 	int quantity;
+	BigDecimal price;
 	String bookName;
 	String bookCover;
 
@@ -33,6 +36,15 @@ public class Cart {
 		return quantity;
 	}
 
+	public BigDecimal getPrice() {
+		return price;
+	}
+
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
+
+	
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}

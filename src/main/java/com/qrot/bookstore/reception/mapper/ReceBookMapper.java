@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.qrot.bookstore.reception.model.Book;
 import com.qrot.bookstore.reception.model.Comment;
@@ -18,7 +19,14 @@ import com.qrot.bookstore.reception.model.Comment;
  */
 @Mapper
 public interface ReceBookMapper {
-
+	
+	/**
+	 * 写入图片
+	 */
+	@Update("update book_info set book_cover=#{cover} where book_id=#{bookid}")
+	void coverupdate(com.qrot.bookstore.background.model.Book book);
+	
+	
 	/**
 	 * 显示所有书籍信息
 	 * 
@@ -123,7 +131,7 @@ public interface ReceBookMapper {
 	 * 
 	 * @return
 	 */
-	@Select("select * from v_show_all_book order by book_publtime desc limit 10 offset 0")
+	@Select("select * from v_show_all_book order by book_publtime desc limit 5 offset 0")
 	@Results(value = { 
 			@Result(column = "book_id", property = "id"), 
 			@Result(column = "book_price", property = "price"),
@@ -147,7 +155,7 @@ public interface ReceBookMapper {
 	 * 
 	 * @return
 	 */
-	@Select("select * from v_show_all_book order by book_volume desc limit 10 offset 0;")
+	@Select("select * from v_show_all_book order by book_volume desc limit 5 offset 0;")
 	@Results(value = { 
 			@Result(column = "book_id", property = "id"), 
 			@Result(column = "book_price", property = "price"),
@@ -171,7 +179,7 @@ public interface ReceBookMapper {
 	 * 
 	 * @return
 	 */
-	@Select("select * from v_show_all_book order by book_score desc limit 10 offset 0")
+	@Select("select * from v_show_all_book order by book_score desc limit 5 offset 0")
 	@Results(value = { 
 			@Result(column = "book_id", property = "id"), 
 			@Result(column = "book_price", property = "price"),
@@ -194,7 +202,7 @@ public interface ReceBookMapper {
 	 * 分类显示书籍
 	 * @return
 	 */
-	@Select("select * from v_show_all_book where book_kind=#{kind} limit 10 offset #{offset}")
+	@Select("select * from v_show_all_book where book_kind=#{kind} limit 8 offset #{offset}")
 	@Results(value = { 
 			@Result(column = "book_id", property = "id"), 
 			@Result(column = "book_price", property = "price"),

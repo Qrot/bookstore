@@ -16,12 +16,20 @@ import org.springframework.web.bind.annotation.RestController;
 import com.qrot.bookstore.background.model.Book;
 import com.qrot.bookstore.background.service.BackBookService;
 
+
+
 @RestController
 @RequestMapping("/api/1")
 public class BookController {
 
 	@Autowired
 	BackBookService service;
+	
+	@GetMapping(path="/get/{bookid}")
+	@ResponseBody
+	public String getBook(@PathVariable int bookid) {
+		return "ok";
+	}
 	
 	/**
 	 * 新增书籍
