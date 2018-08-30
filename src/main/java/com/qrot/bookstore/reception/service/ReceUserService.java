@@ -36,6 +36,15 @@ public class ReceUserService {
 	public User load(String name, String password) {
 		return usermapper.load(name, password);
 	}
+	/**
+	 * 修改用户信息
+	 * @param user
+	 */
+	@Transactional
+	public void update(User user) {
+		usermapper.updateUser(user);
+		usermapper.updateUserInfo(user);
+	}
 	
 	/**
 	 * 用户注册
@@ -48,14 +57,5 @@ public class ReceUserService {
 		usermapper.createInfo(user);
 		
 	}
-	
-	/**
-	 * 修改用户信息
-	 * @param user
-	 */
-	@Transactional
-	public void update(User user) {
-		usermapper.updatePwd(user);
-		usermapper.updateInfo(user);
-	}
+
 }

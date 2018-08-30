@@ -1,20 +1,15 @@
 package com.qrot.bookstore.reception.mapper;
 
-<<<<<<< HEAD
-=======
 import java.util.List;
 
-<<<<<<< HEAD
-import org.apache.ibatis.annotations.Many;
-=======
->>>>>>> f5e1f9b9a5f3a5def35502712774b53061be1918
+
 import org.apache.ibatis.annotations.Delete;
->>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.qrot.bookstore.reception.model.Comment;
@@ -49,11 +44,8 @@ public interface ReceOrdersMapper {
 	 */
 	@Update("update book set book_volume=(book_volume+(#{quantity})) where book_id=#{bookId}")
 	void updateBookVolume(Item item);
-<<<<<<< HEAD
-=======
 	
 	/**
-<<<<<<< HEAD
 	 * 书籍库存减少
 	 * @param item
 	 */
@@ -61,17 +53,13 @@ public interface ReceOrdersMapper {
 	void updateBookStorage(Item item);
 	
 	/**
-=======
->>>>>>> f5e1f9b9a5f3a5def35502712774b53061be1918
 	 * 查询用户订单
 	 * @param userId
 	 * @return
 	 */
-<<<<<<< HEAD
+
 	@Select("select * from orders where user_id=#{userId} and order_state !='4'")
-=======
-	@Select("select * from v_show_all_orders where user_id=#{userId} and order_state !='4'")
->>>>>>> f5e1f9b9a5f3a5def35502712774b53061be1918
+
 	@Results(value = { 
 			@Result(column = "order_id", property = "orderId"), 
 			@Result(column = "order_total", property = "total"),
@@ -108,12 +96,7 @@ public interface ReceOrdersMapper {
 	 * 删除订单
 	 * @param orderId
 	 */
-<<<<<<< HEAD
-	@Delete("update orders set order_state = '4' where order_id = #{orderId}")
-=======
 	@Update("update orders set order_state = '4' where order_id = #{orderId}")
->>>>>>> f5e1f9b9a5f3a5def35502712774b53061be1918
 	void deleteOrder(int orderId);
->>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
 
 }

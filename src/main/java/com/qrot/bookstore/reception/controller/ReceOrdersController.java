@@ -1,45 +1,12 @@
 package com.qrot.bookstore.reception.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
-=======
->>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
-=======
->>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
-=======
->>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
-=======
->>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
-=======
->>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
-=======
->>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
-=======
->>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
-=======
->>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
-=======
->>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
 import org.springframework.web.bind.annotation.CrossOrigin;
-=======
->>>>>>> f5e1f9b9a5f3a5def35502712774b53061be1918
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
->>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,17 +21,47 @@ import com.qrot.bookstore.reception.service.ReceOrdersService;
  */
 @Controller
 @RequestMapping("/orders")
+@CrossOrigin
 public class ReceOrdersController {
 
 	@Autowired
 	ReceOrdersService ordersService;
 
+	/**
+	 * 创建订单
+	 * @param order
+	 */
 	@PostMapping("/create")
 	@ResponseBody
 	public void create(@RequestBody Orders order) {
 
 		ordersService.subOrder(order);
 
+	}
+	
+	/**
+	 * 删除订单
+	 * @param orderId
+	 */
+	@PostMapping("/delete")
+	@ResponseBody
+	public String delete(@RequestBody Orders order) {
+		
+		ordersService.deleteOrder(order.getOrderId());
+		
+		return "msg : ok";
+		
+	}
+	
+	/**
+	 * 获取用户订单
+	 * @param userId
+	 * @return
+	 */
+	@GetMapping("/{userId}")
+	@ResponseBody
+	public List<Orders> selectUserOrder(@PathVariable int userId) {
+		return ordersService.selectUserOrder(userId);
 	}
 
 }

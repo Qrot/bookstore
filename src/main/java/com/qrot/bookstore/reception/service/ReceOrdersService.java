@@ -1,5 +1,7 @@
 package com.qrot.bookstore.reception.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,68 +32,11 @@ public class ReceOrdersService {
 		for (Item item : order.getItemList()) {
 			ordersMapper.createItem(item);
 			ordersMapper.updateBookVolume(item);
+			ordersMapper.updateBookStorage(item);
 		}
 		
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
-=======
->>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
-=======
->>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
-=======
->>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
-=======
-=======
->>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
-=======
->>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
-=======
->>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
 	
-	/**
-	 * 删除订单
-	 * @param orderId
-	 */
-	@Transactional
-	public void deleteOrder(int orderId) {
-		ordersMapper.deleteOrder(orderId);
-	}
-	
-	/**
-	 * 查询用户订单
-	 * @param userId
-	 * @return
-	 */
-	public List<Orders> selectUserOrder(int userId){
-		return ordersMapper.selectUserOrder(userId);
-	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
-=======
->>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
-=======
->>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
-=======
->>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
-=======
->>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
-=======
->>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
 
 	/**
 	 * 删除订单
@@ -110,6 +55,5 @@ public class ReceOrdersService {
 	public List<Orders> selectUserOrder(int userId){
 		return ordersMapper.selectUserOrder(userId);
 	}
->>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
 
 }

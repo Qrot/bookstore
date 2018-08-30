@@ -1,5 +1,7 @@
 package com.qrot.bookstore.reception.model;
 
+import java.math.BigDecimal;
+
 /**
  * 购物车实体类
  * 
@@ -10,6 +12,7 @@ public class Cart {
 	int userId;
 	int bookId;
 	int quantity;
+	BigDecimal price;
 	String bookName;
 	String bookCover;
 
@@ -32,21 +35,6 @@ public class Cart {
 	public int getQuantity() {
 		return quantity;
 	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
-	public BigDecimal getPrice() {
-		return price;
-	}
-
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
-
-<<<<<<< HEAD
-=======
 	
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
@@ -60,10 +48,6 @@ public class Cart {
 		this.price = price;
 	}
 
-<<<<<<< HEAD
->>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
-=======
->>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
 	public String getBookName() {
 		return bookName;
 	}

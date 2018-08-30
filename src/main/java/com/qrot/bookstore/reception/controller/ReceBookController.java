@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ import com.qrot.bookstore.reception.service.ReceBookService;
  */
 @Controller
 @RequestMapping("/book")
+@CrossOrigin
 public class ReceBookController {
 
 	@Autowired
@@ -33,6 +35,36 @@ public class ReceBookController {
 	public List<Book> show() {
 
 		return bookService.show();
+	}
+	
+	/**
+	 * 按评分排序
+	 * @return
+	 */
+	@GetMapping("/score")
+	@ResponseBody
+	public List<Book> scoreSelectSort(){
+		return bookService.scoreSelectSort();
+	}
+	
+	/**
+	 * 按销量排序
+	 * @return
+	 */
+	@GetMapping("/volume")
+	@ResponseBody
+	public List<Book> volumeSelectSort(){
+		return bookService.volumeSelectSort();
+	}
+	
+	/**
+	 * 按新品排序
+	 * @return
+	 */
+	@GetMapping("/time")
+	@ResponseBody
+	public List<Book> timeSelectSort(){
+		return bookService.timeSelectSort();
 	}
 	
 	/**
