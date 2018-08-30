@@ -40,6 +40,7 @@ public class ReceCartService {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
@@ -49,6 +50,42 @@ public class ReceCartService {
 >>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
 =======
 >>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
+=======
+	
+	/**
+	 * 添加购物车
+	 * @param cart
+	 * @return
+	 */
+	public Cart create(Cart cart) {
+		return cartMapper.create(cart);
+	}
+	
+	/**
+	 * 修改购物车订单项
+	 * @param cart
+	 * @return
+	 */
+	public void update(Cart cart) {
+		cartMapper.update(cart);
+	}
+	
+	/**
+	 * 删除单个购物车订单项
+	 * @param cart
+	 */
+	public void delete(Cart cart) {
+		cartMapper.delete(cart);
+	}
+	
+	/**
+	 * 清空该用户购物车
+	 * @param userId
+	 */
+	public void empty(int userId) {
+		cartMapper.empty(userId);
+	}
+>>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
 
 	/**
 	 * 添加购物车

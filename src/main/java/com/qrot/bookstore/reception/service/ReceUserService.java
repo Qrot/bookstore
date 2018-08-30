@@ -48,5 +48,14 @@ public class ReceUserService {
 		usermapper.createInfo(user);
 		
 	}
-
+	
+	/**
+	 * 修改用户信息
+	 * @param user
+	 */
+	@Transactional
+	public void update(User user) {
+		usermapper.updatePwd(user);
+		usermapper.updateInfo(user);
+	}
 }
