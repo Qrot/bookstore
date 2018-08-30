@@ -92,7 +92,6 @@ public interface ReceUserMapper {
 	void createInfo(User user);
 	
 	/**
-<<<<<<< HEAD
 	 * 更新 密码
 	 * @param user
 	 */
@@ -104,19 +103,5 @@ public interface ReceUserMapper {
 	 */
 	@Update("update user_info set user_sex=#{sex},user_phone=#{phone},user_email=#{email} where user_id=#{id}")
 	void updateUserInfo(User user);
-=======
-	 * 修改用户密码
-	 * @param user
-	 */
-	@Update("update user set user_password=#{password} where user_id=#{userId}")
-	void updatePwd(User user);
-	
-	/**
-	 * 修改用户信息
-	 * @param user
-	 */
-	@Update("update user_info set user_sex=#{sex},user_phone=#{phone},user_email=#{email} where user_id=#{userId}")
-	void updateInfo(User user);
->>>>>>> f5e1f9b9a5f3a5def35502712774b53061be1918
 
 }

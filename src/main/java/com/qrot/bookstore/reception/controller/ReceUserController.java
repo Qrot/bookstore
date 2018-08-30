@@ -49,19 +49,16 @@ public class ReceUserController {
 	 */
 	@GetMapping("/load")
 	@ResponseBody
-	public String load(
+	public User load(
 			@RequestParam(name="n", required=false) String name,
 			@RequestParam(name="p", required=false) String password) {
-		String msg;
 		User user = userService.load(name, password);
 		
 		if(user == null) {
-			msg = "用户名或密码错误！";
-			return msg;
+			return null;
 		}
 		
-		msg = "OK";
-		return msg;
+		return user;
 	}
 	
 	@PostMapping("/update")
@@ -72,18 +69,12 @@ public class ReceUserController {
 		System.out.println(user.getId());
 	}
 	
-	@PostMapping("/create")
+	@PostMapping
 	@ResponseBody
 	public void create(@RequestBody User user) {
 		
 		userService.create(user);
 		
-	}
-	
-	@PostMapping("/update")
-	@ResponseBody
-	public void update(@RequestBody User user) {
-		userService.update(user);
 	}
 
 }

@@ -35,40 +35,6 @@ public class ReceCartService {
 	public List<Cart> select(int id) {
 		return cartMapper.select(id);
 	}
-	
-	/**
-	 * 添加购物车
-	 * @param cart
-	 * @return
-	 */
-	public Cart create(Cart cart) {
-		return cartMapper.create(cart);
-	}
-	
-	/**
-	 * 修改购物车订单项
-	 * @param cart
-	 * @return
-	 */
-	public void update(Cart cart) {
-		cartMapper.update(cart);
-	}
-	
-	/**
-	 * 删除单个购物车订单项
-	 * @param cart
-	 */
-	public void delete(Cart cart) {
-		cartMapper.delete(cart);
-	}
-	
-	/**
-	 * 清空该用户购物车
-	 * @param userId
-	 */
-	public void empty(int userId) {
-		cartMapper.empty(userId);
-	}
 
 	/**
 	 * 添加购物车

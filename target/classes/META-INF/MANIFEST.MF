@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: Administrator
-=======
-Built-By: Amy_o
->>>>>>> f5e1f9b9a5f3a5def35502712774b53061be1918
 Build-Jdk: 10.0.1
 Implementation-Title: bookstore
 Implementation-Version: 0.0.1-SNAPSHOT

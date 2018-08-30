@@ -33,8 +33,8 @@ public class BackOrderService {
 	 * 更新订单状态
 	 * @param order
 	 */
-	public void updateOrder(int id) {
-		ordersMapper.updateOrder(id);
+	public void updateOrder(Orders order) {
+		ordersMapper.updateOrder(order);
 	}
 	
 	/**
