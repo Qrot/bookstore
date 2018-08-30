@@ -105,6 +105,9 @@ public interface ReceUserMapper {
 	@Update("update user_info set user_sex=#{sex},user_phone=#{phone},user_email=#{email} where user_id=#{id}")
 	void updateUserInfo(User user);
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
+=======
 >>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
 =======
 >>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
