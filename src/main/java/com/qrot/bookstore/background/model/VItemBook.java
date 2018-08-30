@@ -17,6 +17,7 @@ public class VItemBook {
 	private String bookAuthor;
 	private String bookPublish;
 	private String bookKind;
+	private String bookCover;
 	private int itemQuantity;
 	private BigDecimal itemPrice;
 	private BigDecimal itemSubtotal;
@@ -31,6 +32,14 @@ public class VItemBook {
 
 	public void setOrderID(int orderID) {
 		this.orderID = orderID;
+	}
+
+	public String getBookCover() {
+		return "http://localhost:8080/" +bookCover;
+	}
+
+	public void setBookCover(String bookCover) {
+		this.bookCover = bookCover;
 	}
 
 	public int getBookID() {
