@@ -34,5 +34,26 @@ public class ReceOrdersService {
 		}
 		
 	}
+<<<<<<< HEAD
+=======
+
+	/**
+	 * 删除订单
+	 * @param orderId
+	 */
+	@Transactional
+	public void deleteOrder(int orderId) {
+		ordersMapper.deleteOrder(orderId);
+	}
+	
+	/**
+	 * 查询用户订单
+	 * @param userId
+	 * @return
+	 */
+	public List<Orders> selectUserOrder(int userId){
+		return ordersMapper.selectUserOrder(userId);
+	}
+>>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
 
 }

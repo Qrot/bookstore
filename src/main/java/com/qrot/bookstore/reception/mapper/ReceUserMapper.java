@@ -89,5 +89,21 @@ public interface ReceUserMapper {
 			@Result(column = "user_email", property = "email"), 
 	})
 	void createInfo(User user);
+<<<<<<< HEAD
+=======
+	
+	/**
+	 * 更新 密码
+	 * @param user
+	 */
+	@Update("update user set user_password=#{password} where user_id=#{id}")
+	void updateUser(User user);
+	/**
+	 * 更新性别、电话、邮箱
+	 * @param user
+	 */
+	@Update("update user_info set user_sex=#{sex},user_phone=#{phone},user_email=#{email} where user_id=#{id}")
+	void updateUserInfo(User user);
+>>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
 
 }

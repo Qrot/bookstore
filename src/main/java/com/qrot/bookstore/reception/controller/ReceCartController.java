@@ -47,4 +47,8 @@ public class ReceCartController {
 		return cartService.select(id);
 	}
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
 }
