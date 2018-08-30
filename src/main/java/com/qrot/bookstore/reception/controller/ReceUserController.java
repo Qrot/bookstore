@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +23,6 @@ import com.qrot.bookstore.reception.service.ReceUserService;
 @Controller
 // 控制器的 URL
 @RequestMapping("/user")
-@CrossOrigin
 public class ReceUserController {
 
 	@Autowired
@@ -61,13 +59,6 @@ public class ReceUserController {
 		return user;
 	}
 	
-	@PostMapping("/update")
-	@ResponseBody
-	public void update(@RequestBody User user) {
-		userService.update(user);
-		System.out.println("ok");
-		System.out.println(user.getId());
-	}
 	
 	@PostMapping
 	@ResponseBody
