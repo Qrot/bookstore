@@ -37,6 +37,14 @@ public class Cart {
 		this.quantity = quantity;
 	}
 
+	public BigDecimal getPrice() {
+		return price;
+	}
+
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
+
 	public String getBookName() {
 		return bookName;
 	}
