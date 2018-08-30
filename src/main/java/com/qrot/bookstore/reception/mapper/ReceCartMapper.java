@@ -46,6 +46,39 @@ public interface ReceCartMapper {
 	})
 	List<Cart> select(int id);
 	
+<<<<<<< HEAD
+=======
+	/**
+	 * 添加购物车
+	 * @param cart
+	 * @return
+	 */
+	@Insert("insert into cart values('userId','bookId','quantity')")
+	Cart create(Cart cart);
+	
+	/**
+	 * 修改购物车订单项数量
+	 * @param cart
+	 * @return
+	 */
+	@Update("update cart set cart_quantity=#{quantity} where book_id=#{bookId} and user_id=#{userId}")
+	Cart update(Cart cart);
+	
+	/**
+	 * 删除单个购物车订单项
+	 * @param cart
+	 */
+	@Delete("delete from cart where user_id=#{userId} and book_id=#{bookId}")
+	void delete(Cart cart);
+	
+	/**
+	 * 清空该用户购物车
+	 * @param userId
+	 */
+	@Delete("delete from cart where user_id=#{userId}")
+	void empty(int userId);
+
+>>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
 	/**
 	 * 添加购物车
 	 * @param cart

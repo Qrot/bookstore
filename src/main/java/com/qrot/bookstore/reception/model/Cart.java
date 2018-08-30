@@ -45,6 +45,22 @@ public class Cart {
 		this.price = price;
 	}
 
+<<<<<<< HEAD
+=======
+	
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public BigDecimal getPrice() {
+		return price;
+	}
+
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
+
+>>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
 	public String getBookName() {
 		return bookName;
 	}

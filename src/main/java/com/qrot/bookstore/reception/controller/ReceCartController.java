@@ -154,5 +154,8 @@ public class ReceCartController {
 	public void empty(int userId) {
 		cartService.empty(userId);
 	}
+<<<<<<< HEAD
+>>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
+=======
 >>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
 }
