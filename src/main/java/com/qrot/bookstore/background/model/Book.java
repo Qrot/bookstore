@@ -2,6 +2,7 @@ package com.qrot.bookstore.background.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Book {

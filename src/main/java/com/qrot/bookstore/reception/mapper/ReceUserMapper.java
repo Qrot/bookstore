@@ -93,7 +93,6 @@ public interface ReceUserMapper {
 =======
 	
 	/**
-<<<<<<< HEAD
 	 * 更新 密码
 	 * @param user
 	 */
@@ -105,6 +104,7 @@ public interface ReceUserMapper {
 	 */
 	@Update("update user_info set user_sex=#{sex},user_phone=#{phone},user_email=#{email} where user_id=#{id}")
 	void updateUserInfo(User user);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -135,5 +135,7 @@ public interface ReceUserMapper {
 	void updateInfo(User user);
 >>>>>>> f5e1f9b9a5f3a5def35502712774b53061be1918
 >>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
+=======
+>>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
 
 }

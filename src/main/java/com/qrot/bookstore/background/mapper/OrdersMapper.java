@@ -45,8 +45,8 @@ public interface OrdersMapper {
 	 * 修改订单状态
 	 * @param order
 	 */
-	@Update("update orders set order_state=2 where order_id=#{id}")
-	void updateOrder(@Param("id") int id);
+	@Update("update orders set order_state=#{state} where order_id=#{id}")
+	void updateOrder(Orders order);
 	
 	/**
 	 * 得到某订单的所有项，只含订单项的信息
@@ -58,7 +58,6 @@ public interface OrdersMapper {
 			@Result(column="order_id",property="orderID"),
 			@Result(column="book_id",property="bookID"),
 			@Result(column="book_name",property="bookName"),
-			@Result(column="book_cover",property="bookCover"),
 			@Result(column="book_author",property="bookAuthor"),
 			@Result(column="book_publish",property="bookPublish"),
 			@Result(column="book_kind",property="bookKind"),

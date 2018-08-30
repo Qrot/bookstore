@@ -6,10 +6,10 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,7 +21,6 @@ import com.qrot.bookstore.background.service.BackOrderService;
 
 @RequestMapping("/api/1")
 @RestController
-@CrossOrigin
 public class OrdersController {
 
 	@Autowired
@@ -44,8 +43,8 @@ public class OrdersController {
 	 * @return
 	 */
 	@PutMapping(path="/updateOrder")
-	public String updateOrder(@RequestParam int id) {
-		service.updateOrder(id);
+	public String updateOrder(@RequestBody Orders order) {
+		service.updateOrder(order);
 		return "{msg: 'ok'}";
 	}
 	
@@ -158,7 +157,7 @@ public class OrdersController {
 	@ResponseBody
 	public List<Orders> getOrderByState(
 			@RequestParam(name="s", defaultValue="1",required=false) char state,
-			@RequestParam(name="l", defaultValue="5",required=false) int len,
+			@RequestParam(name="l", defaultValue="6",required=false) int len,
 			@RequestParam(name="o", defaultValue="0", required=false) int offset){
 		return service.getOrderByState(state, len, offset);
 	}
@@ -210,8 +209,8 @@ public class OrdersController {
 	public List<Orders> getOrderByTimeAndState(
 			@RequestParam(name="st", defaultValue="1970-01-01",required=false) String start,
 			@RequestParam(name="e",required=false) String end,
-			@RequestParam(name="se", defaultValue="3",required=false) char state,
-			@RequestParam(name="l", defaultValue="5",required=false) int len,
+			@RequestParam(name="se", defaultValue="1",required=false) char state,
+			@RequestParam(name="l", defaultValue="6",required=false) int len,
 			@RequestParam(name="o", defaultValue="0", required=false) int offset){
 		
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");

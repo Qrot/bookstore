@@ -57,7 +57,9 @@ public class ReceBookController {
 	 */
 	@GetMapping("/{bookId}")
 	@ResponseBody
-	public Book showBookDetailInfo(@PathVariable int bookId) {
+	public Book showBookDetailInfo(
+			@PathVariable int bookId
+	) {
 		return bookService.showBookDetailInfo(bookId);
 	}
 	

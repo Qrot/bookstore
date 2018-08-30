@@ -24,6 +24,7 @@ public class ReceOrdersService {
 	 */
 	@Transactional
 	public void subOrder(Orders order) {
+		System.out.println("ok");
 		ordersMapper.subOrder(order);
 		
 		// 循环插入订单项
@@ -33,6 +34,7 @@ public class ReceOrdersService {
 		}
 		
 	}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -68,6 +70,8 @@ public class ReceOrdersService {
 		return ordersMapper.selectUserOrder(userId);
 	}
 >>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
+=======
+>>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
 
 	/**
 	 * 删除订单
