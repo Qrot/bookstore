@@ -3,7 +3,11 @@ Manifest-Version: 1.0
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 Built-By: TanZhiHua
+=======
+Built-By: Administrator
+>>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
 =======
 Built-By: Administrator
 >>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
