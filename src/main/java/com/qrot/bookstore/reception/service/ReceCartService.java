@@ -36,7 +36,10 @@ public class ReceCartService {
 		return cartMapper.select(id);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
 
 	/**
 	 * 添加购物车
