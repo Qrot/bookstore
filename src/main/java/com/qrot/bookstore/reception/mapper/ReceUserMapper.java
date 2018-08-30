@@ -110,6 +110,7 @@ public interface ReceUserMapper {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
 =======
 >>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
@@ -135,6 +136,8 @@ public interface ReceUserMapper {
 	void updateInfo(User user);
 >>>>>>> f5e1f9b9a5f3a5def35502712774b53061be1918
 >>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
+=======
+>>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
 =======
 >>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
 
