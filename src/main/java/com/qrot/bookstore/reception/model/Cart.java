@@ -60,6 +60,9 @@ public class Cart {
 		this.price = price;
 	}
 
+<<<<<<< HEAD
+>>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
+=======
 >>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
 	public String getBookName() {
 		return bookName;

@@ -45,6 +45,7 @@ public class ReceCartService {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
@@ -55,6 +56,8 @@ public class ReceCartService {
 =======
 >>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
 =======
+=======
+>>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
 =======
 >>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
 =======
@@ -95,11 +98,14 @@ public class ReceCartService {
 	}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
 =======
 >>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
 =======
 >>>>>>> parent of fa38b89... Merge branch 'master' of https://github.com/Qrot/bookstore
+=======
+>>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
 =======
 >>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
 =======

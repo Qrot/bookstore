@@ -47,7 +47,10 @@ public interface ReceCartMapper {
 	List<Cart> select(int id);
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 71117d8... Revert "Merge branch 'master' of https://github.com/Qrot/bookstore"
 	/**
 	 * 添加购物车
 	 * @param cart
