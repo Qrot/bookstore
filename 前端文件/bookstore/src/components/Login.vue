@@ -43,12 +43,8 @@ export default {
         $('#go').focus();
     },
     login(){
-        this.axios.get(`${this.host}/login`,{
-            params: {
-                n: this.name,
-                p: this.passwd
-            }
-        })
+        let user = { 'name': this.name, 'password': this.passwd }
+        this.axios.post(`${this.host}/login`, user)
         .then((res)=>{
             this.msg = res.data;
             if(this.msg.search('OK')!=0){

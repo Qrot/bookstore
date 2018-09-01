@@ -10,13 +10,13 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min'
 import './assets/commen.css'
 
-Vue.prototype.host = 'http://127.0.0.1:8080/api/1'
-axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
-
 Vue.use(Vuex)
 Vue.prototype.axios = axios
 Vue.prototype.$echarts = echarts 
 Vue.prototype.router = router
+Vue.prototype.host = 'http://127.0.0.1:8080/api/1'
+axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
+
 Vue.config.productionTip = false
 
 new Vue({
