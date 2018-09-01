@@ -19,7 +19,7 @@ import com.qrot.bookstore.reception.service.ReceBookService;
  * @author TanZhiHua 2018年8月6日10点53分
  */
 @Controller
-@RequestMapping("/book")
+@RequestMapping("/book")	
 @CrossOrigin
 public class ReceBookController {
 
@@ -95,14 +95,7 @@ public class ReceBookController {
 	
 	/**
 	 * 模糊查询搜索书籍
-	 * @param price
-	 * @param score
-	 * @param name
-	 * @param author
-	 * @param publish
-	 * @param kind
-	 * @param publTime
-	 * @return
+	 * @param keyWord
 	 */
 	@GetMapping("/select")
 	@ResponseBody

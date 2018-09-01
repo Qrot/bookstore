@@ -33,7 +33,6 @@
                                     <thead>
                                         <tr>
                                             <th>书名</th>
-                                            <th>作者</th>
                                             <th>单价</th>
                                             <th>数量</th>
                                             <th>删除</th>
@@ -42,8 +41,7 @@
                                     <tbody>
                                         <tr v-for="i in caritem" :key="i.bookid">
                                             <td>{{i.bookName}}</td>
-                                            <td>{{i.bookauthor}}</td>
-                                            <td>{{i.bookprice}}</td>
+                                            <td>{{i.price}}</td>
                                             <td>{{i.quantity}}</td>
                                             
                                             <td>
