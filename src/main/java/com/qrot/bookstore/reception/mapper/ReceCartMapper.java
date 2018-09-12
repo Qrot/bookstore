@@ -50,13 +50,14 @@ public interface ReceCartMapper {
 	})
 	List<Cart> select(int id);
 	
+	
 	/**
 	 * 添加购物车
 	 * @param cart
 	 * @return
 	 */
-	@Insert("insert into cart values('userId','bookId','quantity')")
-	Cart create(Cart cart);
+	@Insert("insert into cart values(#{userId},#{bookId},#{quantity})")
+	void create(Cart cart);
 	
 	/**
 	 * 修改购物车订单项数量
@@ -79,5 +80,4 @@ public interface ReceCartMapper {
 	 */
 	@Delete("delete from cart where user_id=#{userId}")
 	void empty(int userId);
-
 }

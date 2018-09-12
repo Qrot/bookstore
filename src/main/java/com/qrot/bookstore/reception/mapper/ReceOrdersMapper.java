@@ -2,6 +2,7 @@ package com.qrot.bookstore.reception.mapper;
 
 import java.util.List;
 
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Many;
@@ -45,11 +46,20 @@ public interface ReceOrdersMapper {
 	void updateBookVolume(Item item);
 	
 	/**
+	 * 书籍库存减少
+	 * @param item
+	 */
+	@Update("update book set book_storage=(book_storage-(#{quantity})) where book_id=#{bookId}")
+	void updateBookStorage(Item item);
+	
+	/**
 	 * 查询用户订单
 	 * @param userId
 	 * @return
 	 */
-	@Select("select * from v_show_all_orders where user_id=#{userId} and order_state !='4'")
+
+	@Select("select * from orders where user_id=#{userId} and order_state !='4'")
+
 	@Results(value = { 
 			@Result(column = "order_id", property = "orderId"), 
 			@Result(column = "order_total", property = "total"),

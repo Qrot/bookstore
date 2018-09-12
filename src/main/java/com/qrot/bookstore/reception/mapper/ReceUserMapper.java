@@ -92,11 +92,18 @@ public interface ReceUserMapper {
 	void createInfo(User user);
 	
 	/**
-	 * 修改用户密码
+	 * 更新 密码
 	 * @param user
 	 */
-	@Update("update user set user_password=#{password} where user_id=#{userId}")
-	void updatePwd(User user);
+	@Update("update user set user_password=#{password} where user_id=#{id}")
+	void updateUser(User user);
+	/**
+	 * 更新性别、电话、邮箱
+	 * @param user
+	 */
+	@Update("update user_info set user_sex=#{sex},user_phone=#{phone},user_email=#{email} where user_id=#{id}")
+	void updateUserInfo(User user);
+
 	
 	/**
 	 * 修改用户信息
@@ -104,5 +111,6 @@ public interface ReceUserMapper {
 	 */
 	@Update("update user_info set user_sex=#{sex},user_phone=#{phone},user_email=#{email} where user_id=#{userId}")
 	void updateInfo(User user);
+
 
 }

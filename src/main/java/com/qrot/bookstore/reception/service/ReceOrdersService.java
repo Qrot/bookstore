@@ -32,10 +32,12 @@ public class ReceOrdersService {
 		for (Item item : order.getItemList()) {
 			ordersMapper.createItem(item);
 			ordersMapper.updateBookVolume(item);
+			ordersMapper.updateBookStorage(item);
 		}
 		
 	}
 	
+
 	/**
 	 * 删除订单
 	 * @param orderId

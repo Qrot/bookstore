@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +22,7 @@ import com.qrot.bookstore.reception.service.ReceCartService;
  */
 @Controller
 @RequestMapping("/cart")
+@CrossOrigin
 public class ReceCartController {
 	
 	@Autowired
@@ -85,7 +87,7 @@ public class ReceCartController {
 	 */
 	@PostMapping("/empty")
 	@ResponseBody
-	public void empty(int userId) {
+	public void empty(@RequestBody int userId) {
 		cartService.empty(userId);
 	}
 }

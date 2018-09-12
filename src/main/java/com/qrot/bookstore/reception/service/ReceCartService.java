@@ -41,8 +41,8 @@ public class ReceCartService {
 	 * @param cart
 	 * @return
 	 */
-	public Cart create(Cart cart) {
-		return cartMapper.create(cart);
+	public void create(Cart cart) {
+		cartMapper.create(cart);
 	}
 	
 	/**
