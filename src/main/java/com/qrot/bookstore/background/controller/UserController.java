@@ -1,15 +1,13 @@
 package com.qrot.bookstore.background.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qrot.bookstore.background.model.User;
-import com.qrot.bookstore.background.service.BackUserService;
 
 /**
  * 控制器
@@ -21,26 +19,18 @@ import com.qrot.bookstore.background.service.BackUserService;
 @CrossOrigin
 public class UserController {
 	
-	@Autowired
-	BackUserService service;
-
-	@GetMapping("/login")
+	@PostMapping("/login")
 	@ResponseBody
-	public String login(
-			@RequestParam(name="n") String name,
-			@RequestParam(name="p") String password) {
-		String msg;
-		
-		if(!("admin".equals(name))) {
-			msg = "用户名错误！";
-		}else {
-			User user = service.login(name);
-			if(user.getPassword().equals(password)) {
-				msg="OK";
-			}else {
-				msg="密码错误";
+	public String login(@RequestBody User u) {
+		if("admin".equals(u.getName())) {
+			if("123456".equals(u.getPassword())) {
+				return "OK";
 			}
-		}	
-		return msg;
+			else
+				return "密码错误！";
+		}
+		else
+			return "无此用户！";
 	}
+	
 }

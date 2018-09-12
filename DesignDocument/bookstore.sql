@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : mydatabase
+ Source Server         : mysql
  Source Server Type    : MySQL
  Source Server Version : 80011
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 80011
  File Encoding         : 65001
 
- Date: 21/08/2018 16:23:14
+ Date: 01/09/2018 10:19:47
 */
 
 SET NAMES utf8mb4;
@@ -37,7 +37,7 @@ CREATE TABLE `book`  (
 -- ----------------------------
 INSERT INTO `book` VALUES (1001, 37.40, 23, 104, 4.50, 0);
 INSERT INTO `book` VALUES (1002, 102.40, 14, 535, 4.90, 0);
-INSERT INTO `book` VALUES (1003, 43.50, 25, 326, 4.80, 0);
+INSERT INTO `book` VALUES (1003, 43.50, 25, 326, 4.80, 1);
 INSERT INTO `book` VALUES (1004, 28.70, 14, 75, 4.90, 0);
 INSERT INTO `book` VALUES (1005, 21.60, 23, 53, 4.70, 0);
 INSERT INTO `book` VALUES (1006, 73.30, 9, 75, 4.80, 0);
@@ -49,12 +49,13 @@ INSERT INTO `book` VALUES (1011, 28.10, 34, 64, 4.90, 0);
 INSERT INTO `book` VALUES (1012, 53.50, 19, 34, 4.60, 0);
 INSERT INTO `book` VALUES (1013, 35.80, 3, 23, 4.90, 0);
 INSERT INTO `book` VALUES (1014, 45.80, 4, 54, 4.60, 0);
-INSERT INTO `book` VALUES (1015, 34.70, 2, 37, 4.70, 0);
-INSERT INTO `book` VALUES (1016, 45.50, 8, 26, 4.80, 0);
+INSERT INTO `book` VALUES (1015, 34.70, 2, 37, 4.70, 1);
+INSERT INTO `book` VALUES (1016, 45.50, 8, 26, 4.80, 1);
 INSERT INTO `book` VALUES (1018, 56.00, 10, 35, 4.80, 0);
-INSERT INTO `book` VALUES (1019, 45.00, 16, 93, 4.70, 0);
+INSERT INTO `book` VALUES (1019, 45.00, 16, 93, 4.70, 1);
 INSERT INTO `book` VALUES (1033, 34.00, 64, 0, 0.00, 0);
-INSERT INTO `book` VALUES (1035, 34.00, 45, 0, 0.00, 0);
+INSERT INTO `book` VALUES (1035, 34.00, 45, 0, 0.00, 1);
+INSERT INTO `book` VALUES (1044, 26.50, 65, 0, 0.00, 0);
 
 -- ----------------------------
 -- Table structure for book_info
@@ -71,12 +72,12 @@ CREATE TABLE `book_info`  (
   `book_publtime` date DEFAULT NULL,
   `book_cover` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`book_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1038 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1043 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of book_info
 -- ----------------------------
-INSERT INTO `book_info` VALUES (1001, '9787540487676', '总要习惯一个人', '蕊希 ', '湖南文艺出版社', '文学', '治愈千万人、音频总播放量过30亿的人气电台主持人、作家蕊希诚意新作。所有的煎熬和孤独，都成了我走向你的路。世界欠我一个你，是世界欠的，不是你。写给每一个爱过哭过失去过，但依然在用力成长的你。', '2016-06-12', 'img/1001.jpg');
+INSERT INTO `book_info` VALUES (1001, '9787540487676', '总要习惯一个人', '蕊希 ', '湖南文艺出版社', '文学', '治愈千万人、音频总播放量过30亿的人气电台主持人、作家蕊希诚意新作。所有的煎熬和孤独，都成了我走向你的路。世界欠我一个你，是世界欠的，不是你。写给每一个爱过哭过失去过，但依然在用力成长的你。', '2016-06-11', 'img/1001.jpg');
 INSERT INTO `book_info` VALUES (1002, '9787111407010', '算法导论（原书第3版）', '(美)科尔曼', '机械工业出版社', '工学', '本书将严谨性和全面性融为一体，深入讨论各类算法，并着力使这些算法的设计和分析能为各个层次的读者接受。全书各章自成体系，可以作为独立的学习单元；算法以英语和伪代码的形式描述，具备初步程序设计经验的人就能看懂；说明和解释力求浅显易懂，不失深度和数学严谨性。\r\n　　全书选材经典、内容丰富、结构合理、逻辑清晰，对本科生的数据结构课程和研究生的算法课程都是非常实用的教材，在IT专业人员的职业生涯中，本书也是一本案头必备的参考书或工程实践手册。', '2013-01-01', 'img/1002.jpg');
 INSERT INTO `book_info` VALUES (1003, '9787214067593', '几何原本', '(古希腊)欧几里得', '江苏人民出版社', '自然科学', '《几何原本》是古希腊数学家欧几里得的一部不朽之作，集整个古希腊数学的成果与精神于一身。既是数学巨著，也是哲学巨著，并且第一次完成了人类对空间的认识。该书自问世之日起，在长达两千多年的时间里，历经多次翻译和修订，自1482年第一个印刷本出版，至今已有一千多种不同版本。除《圣经》之外，没有任何其他著作，其研究、使用和传播之广泛能够与《几何原本》相比。', '2017-11-12', 'img/1003.jpg');
 INSERT INTO `book_info` VALUES (1004, '9787548059974', '道德经', '(春秋)老子', '江西美术出版社', '文学', '全书分为上、下两篇。上篇称《道经》，下篇为《德经》。《道经》讲述的是宇宙根本，道出了天地万物变化的玄机，揭示了阴阳变幻的微妙。《德经》讲述的是处世方略。道出了人事的进退之术。本书在忠于原著的基础上，详细注解并翻译原文，并针对每章内容分别从为人之道、从政之道、经商之道等三大方向列举了大量妙趣横生的古今中外案例，力求呈现出多方位的立体化效果，使读者能够更好体会和感悟两千多年前的哲人圣典。', '2018-06-01', 'img/1004.jpg');
@@ -96,6 +97,7 @@ INSERT INTO `book_info` VALUES (1018, '9754476576753', 'book6', 'author6', 'publ
 INSERT INTO `book_info` VALUES (1019, '7653757567267', 'book7', 'author7', 'publish7', '文学', 'sumgfdgsdgd', '2018-02-08', 'img/book.jpg');
 INSERT INTO `book_info` VALUES (1033, '7546387873567', 'book8', 'author8', 'publish8', '文学', 'sumgrertegdfgd', '2018-08-03', 'img/book.jpg');
 INSERT INTO `book_info` VALUES (1035, '2546398473821', 'book9', 'author9', 'publish9', '文学', 'teaxvrdfgdfg', '2018-07-31', 'img/book.jpg');
+INSERT INTO `book_info` VALUES (1044, '9787532166831', '少时读书', '废名', '上海文艺出版社', '文艺', '书分三辑，一是“中国文章”，关乎文章的写法以及读法，亦是心法。二是“灼灼其华”，关乎诗歌，名字取自诗经，而内容又不囿于此，甚至涉及杜甫的内容要更厚些。三是“格义致知”，更为远阔交融，主要是对于佛家的理解，儒与佛与新思想的相遇，等。', '2018-07-31', 'img/125320847-1_l_4.jpg');
 
 -- ----------------------------
 -- Table structure for cart
@@ -364,7 +366,31 @@ CREATE ALGORITHM = UNDEFINED DEFINER = `root`@`localhost` SQL SECURITY DEFINER V
 -- View structure for v_item_book
 -- ----------------------------
 DROP VIEW IF EXISTS `v_item_book`;
-CREATE ALGORITHM = UNDEFINED DEFINER = `root`@`localhost` SQL SECURITY DEFINER VIEW `v_item_book` AS select `item`.`order_id` AS `order_id`,`item`.`book_id` AS `book_id`,`book_info`.`book_name` AS `book_name`,`book_info`.`book_author` AS `book_author`,`book_info`.`book_publish` AS `book_publish`,`book_info`.`book_kind` AS `book_kind`,`item`.`item_quantity` AS `item_quantity`,`item`.`item_price` AS `item_price`,(`item`.`item_quantity` * `item`.`item_price`) AS `subtotal`,`orders`.`order_time` AS `order_time` from ((`item` join `book_info`) join `orders`) where ((`item`.`book_id` = `book_info`.`book_id`) and (`item`.`order_id` = `orders`.`order_id`)) order by `orders`.`order_time` desc,`item`.`order_id` desc,`item`.`book_id`;
+CREATE ALGORITHM = UNDEFINED DEFINER = `root`@`localhost` SQL SECURITY DEFINER VIEW `v_item_book` AS select `item`.`order_id` AS `order_id`,`item`.`book_id` AS `book_id`,`book_info`.`book_name` AS `book_name`,`book_info`.`book_author` AS `book_author`,`book_info`.`book_publish` AS `book_publish`,`book_info`.`book_kind` AS `book_kind`,`book_info`.`book_cover` AS `book_cover`,`item`.`item_quantity` AS `item_quantity`,`item`.`item_price` AS `item_price`,(`item`.`item_quantity` * `item`.`item_price`) AS `subtotal`,`orders`.`order_time` AS `order_time` from ((`item` join `book_info`) join `orders`) where ((`item`.`book_id` = `book_info`.`book_id`) and (`item`.`order_id` = `orders`.`order_id`)) order by `orders`.`order_time` desc,`item`.`order_id` desc,`item`.`book_id`;
+
+-- ----------------------------
+-- View structure for v_show_all_book
+-- ----------------------------
+DROP VIEW IF EXISTS `v_show_all_book`;
+CREATE ALGORITHM = UNDEFINED DEFINER = `root`@`localhost` SQL SECURITY DEFINER VIEW `v_show_all_book` AS select `a`.`book_id` AS `book_id`,`a`.`book_price` AS `book_price`,`a`.`book_storage` AS `book_storage`,`a`.`book_volume` AS `book_volume`,`a`.`book_score` AS `book_score`,`a`.`book_delete` AS `book_delete`,`b`.`book_isbn` AS `book_isbn`,`b`.`book_name` AS `book_name`,`b`.`book_author` AS `book_author`,`b`.`book_publish` AS `book_publish`,`b`.`book_kind` AS `book_kind`,`b`.`book_summary` AS `book_summary`,`b`.`book_publtime` AS `book_publtime`,`b`.`book_cover` AS `book_cover` from (`book` `a` left join `book_info` `b` on((`a`.`book_id` = `b`.`book_id`)));
+
+-- ----------------------------
+-- View structure for v_show_all_cart
+-- ----------------------------
+DROP VIEW IF EXISTS `v_show_all_cart`;
+CREATE ALGORITHM = UNDEFINED DEFINER = `root`@`localhost` SQL SECURITY DEFINER VIEW `v_show_all_cart` AS select `a`.`user_id` AS `user_id`,`a`.`book_id` AS `book_id`,`a`.`cart_quantity` AS `cart_quantity`,`b`.`book_price` AS `book_price`,`c`.`book_name` AS `book_name`,`c`.`book_cover` AS `book_cover` from ((`cart` `a` left join `book` `b` on((`a`.`book_id` = `b`.`book_id`))) left join `book_info` `c` on((`b`.`book_id` = `c`.`book_id`)));
+
+-- ----------------------------
+-- View structure for v_show_all_orders
+-- ----------------------------
+DROP VIEW IF EXISTS `v_show_all_orders`;
+CREATE ALGORITHM = UNDEFINED DEFINER = `root`@`localhost` SQL SECURITY DEFINER VIEW `v_show_all_orders` AS select `a`.`order_id` AS `order_id`,`a`.`order_total` AS `order_total`,`a`.`user_id` AS `user_id`,`a`.`order_state` AS `order_state`,`a`.`order_name` AS `order_name`,`a`.`order_address` AS `order_address`,`a`.`order_phone` AS `order_phone`,`a`.`order_time` AS `order_time`,`b`.`book_id` AS `book_id`,`b`.`item_quantity` AS `item_quantity`,`b`.`item_price` AS `item_price` from (`orders` `a` left join `item` `b` on((`a`.`order_id` = `b`.`order_id`)));
+
+-- ----------------------------
+-- View structure for v_show_all_user
+-- ----------------------------
+DROP VIEW IF EXISTS `v_show_all_user`;
+CREATE ALGORITHM = UNDEFINED DEFINER = `root`@`localhost` SQL SECURITY DEFINER VIEW `v_show_all_user` AS select `a`.`user_id` AS `user_id`,`a`.`user_name` AS `user_name`,`a`.`user_password` AS `user_password`,`a`.`user_head` AS `user_head`,`b`.`user_sex` AS `user_sex`,`b`.`user_phone` AS `user_phone`,`b`.`user_email` AS `user_email` from (`user` `a` left join `user_info` `b` on((`a`.`user_id` = `b`.`user_id`)));
 
 -- ----------------------------
 -- View structure for v_volume_count
